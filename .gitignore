@@ -8,3 +8,4 @@ groups.yaml
 automations.yaml
 customize.yaml
 scripts.yaml
+!.travis.yml
