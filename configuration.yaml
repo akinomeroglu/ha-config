@@ -1,0 +1,148 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: !secret home_name
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret lat
+  longitude: !secret lon
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret ele
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: !secret tz
+  # Customization file
+  customize: !include customize.yaml
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+
+#Enable HA cloud
+cloud:
+
+# Enables configuration UI
+config:
+
+http:
+
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Weather prediction
+sensor:
+#HızTesti
+  - platform: fastdotcom
+  - platform: yr
+#AyınDurumu
+  - platform: moon
+  - platform: sensehat
+    display_options:
+        - temperature
+        - humidity
+        - pressure
+
+#PiHoleStatistics
+  - platform: pi_hole
+    host: !secret ph_h
+
+#Transmission
+  - platform: transmission
+    host: !secret tr_h
+    port: !secret tr_p
+    monitored_variables:
+      - 'current_status'
+      - 'download_speed'
+      - 'upload_speed'
+      - 'active_torrents'
+
+#HavaKalitesi
+  - platform: waqi
+    token: !secret wa_t
+    locations:
+    - !secret wa_l
+    stations:
+    - !secret wa_s
+
+#Sonarr
+  - platform: sonarr
+    api_key: !secret so_a
+    host: !secret so_h
+    port: !secret so_p
+    monitored_conditions:
+    - upcoming
+    - queue
+    days: 10
+
+#ISS
+binary_sensor:
+  - platform: iss
+
+#Kodi(UsefulWhenActive)
+media_player:
+  - platform: kodi
+    host: !secret ko_h
+
+#FireTv
+  - platform: firetv
+
+#Spotify
+  - platform: spotify
+    client_id: !secret sp_c
+    client_secret: !secret sp_s
+
+#SenseHatLight
+light:
+  platform: sensehat
+  name: SenseHAT
+
+# Text to speech
+tts:
+  - platform: google
+
+#IKEA Tradfri
+tradfri:
+    host: !secret tf_h
+
+#TV Ünitesi
+switch:
+  - platform: tplink
+    host: !secret tp_h
+    name: tv
+
+#Kamera
+camera:
+  - platform: rpi_camera
+    name: salon
+
+#mqtt
+mqtt:
+    broker: !secret mq_h
+    username: !secret mq_a
+    password: !secret mq_u
+    port: !secret mq_p
+    client_id: mq_c
+    certificate: /etc/ssl/certs/ca-certificates.crt
+
+device_tracker:
+  - platform: owntracks
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
