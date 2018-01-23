@@ -1,0 +1,32 @@
+mutfak:
+    name: Mutfak
+    view: yes
+    entities:
+        - light.mutfak
+
+salon:
+    name: Salon
+    view: yes
+    entities:
+        - group.salon
+        - light.tepe
+        - light.abajur
+        - light.yemek_masa
+        - light.sehpa
+        - media_player.kodi
+        - media_player.spotify
+        - media_player.amazon_fire_tv
+        - sensor.pressure
+        - sensor.humidity
+        - sensor.temperature
+        - switch.tv
+        - camera.salon
+
+koridor:         
+    name: Koridor
+    view: yes
+    entities: 
+      - light.koridor_2
+      - light.koridor
+      - light.yatak_koridor
+

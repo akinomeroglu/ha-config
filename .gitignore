@@ -4,8 +4,4 @@
 !.gitignore
 secrets.yaml
 known_devices.yaml
-groups.yaml
-automations.yaml
-customize.yaml
-scripts.yaml
 !.travis.yml
