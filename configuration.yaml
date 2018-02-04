@@ -101,6 +101,7 @@ media_player:
 
 #FireTv
   - platform: firetv
+    device: salon
 
 #Spotify
   - platform: spotify
