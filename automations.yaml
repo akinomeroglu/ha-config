@@ -1,0 +1,18 @@
+- action:
+  - data:
+      brightness_pct: '5'
+      entity_id: light.koridor
+    service: light.turn_on
+  - data:
+      brightness_pct: '5'
+      entity_id: light.yatak_koridor
+    service: light.turn_on
+  alias: koridor-gece
+  condition:
+  - condition: zone
+    entity_id: device_tracker.akin_akin
+    zone: zone.home
+  id: '1518894529978'
+  trigger:
+  - at: '22:00'
+    platform: time
