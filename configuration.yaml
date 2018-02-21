@@ -144,6 +144,13 @@ mqtt:
 device_tracker:
   - platform: owntracks
 
+zone:
+  - name: İş
+    latitude: !secret i_lt
+    longitude: !secret i_lg
+    radius: 100
+    icon: mdi:work
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
