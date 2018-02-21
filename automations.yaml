@@ -28,10 +28,7 @@
       transation: '3'
     service: light.turn_on
   alias: fire-play-set-lights
-  condition:
-  - after: sunset
-    before: sunrise
-    condition: sun
+  condition: []
   id: '1518895788260'
   trigger:
   - entity_id: media_player.amazon_fire_tv
