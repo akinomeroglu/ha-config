@@ -58,6 +58,20 @@ sensor:
         - humidity
         - pressure
 
+#DistanceToHome
+  - platform: google_travel_time
+    name: Eve doğru
+    api_key: !secret gt_a
+    origin: device_tracker.akin_akin
+    destination: zone.home
+
+#DistanceToWork
+  - platform: google_travel_time
+    name: İşe doğru
+    api_key: !secret gt_a
+    origin: device_tracker.akin_akin
+    destination: zone.is
+
 #PiHoleStatistics
   - platform: pi_hole
     host: !secret ph_h
