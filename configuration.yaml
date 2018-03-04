@@ -10,8 +10,9 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: !secret tz
+
   # Customization file
-  customize: !include customize.yaml
+customize: !include customize.yaml
 
 # Show links to resources in log and frontend
 #introduction:
@@ -134,6 +135,7 @@ tts:
 #IKEA Tradfri
 tradfri:
     host: !secret tf_h
+    allow_tradfri_groups: false
 
 #TV Ünitesi
 switch:
@@ -164,6 +166,11 @@ zone:
     longitude: !secret i_lg
     radius: 100
     icon: mdi:work
+
+deconz:
+  host: !secret dc_h
+  api_key: !secret dc_a
+  port: !secret dc_p
 
 group: !include groups.yaml
 automation: !include automations.yaml
