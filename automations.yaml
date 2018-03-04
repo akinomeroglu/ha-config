@@ -20,18 +20,30 @@
   - alias: ''
     data:
       brightness_pct: '70'
-      entity_id:
-      - light.tepe
-      - light.abajur
-      - light.yemek_masa
-      - light.sehpa
-      transation: '3'
+      entity_id: light.salon
     service: light.turn_on
   alias: fire-play-set-lights
-  condition: []
+  condition:
+  - after: sunset
+    before: sunrise
+    condition: sun
   id: '1518895788260'
   trigger:
   - entity_id: media_player.amazon_fire_tv
-    from: idle
     platform: state
-    to: play
+    to: playing
+- action:
+  - data:
+      brightness: '255'
+      entity_id: light.salon
+    service: light.turn_on
+  alias: fire-play-end-show
+  condition:
+  - after: sunset
+    before: sunrise
+    condition: sun
+  id: '1519410534653'
+  trigger:
+  - entity_id: media_player.amazon_fire_tv
+    from: playing
+    platform: state
