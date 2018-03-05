@@ -159,7 +159,7 @@ mqtt:
 
 device_tracker:
   - platform: owntracks
-
+  - platform: bluetooth_tracker
 zone:
   - name: İş
     latitude: !secret i_lt
