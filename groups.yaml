@@ -21,6 +21,7 @@ salon:
         - sensor.temperature
         - switch.tv
         - camera.salon
+        - group.salon_lamba
 
 koridor:         
     name: Koridor
@@ -29,4 +30,15 @@ koridor:
       - light.koridor_2
       - light.koridor
       - light.yatak_koridor
+
+salon_lamba:
+    name: Salon
+    view: no
+    entities:
+      - light.abajur
+      - light.tepe
+      - light.sehpa
+      - light.yemek_masa
+
+
 
