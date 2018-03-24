@@ -47,3 +47,17 @@
   - entity_id: media_player.amazon_fire_tv
     from: playing
     platform: state
+- action:
+  - alias: ''
+    data:
+      brigtness: '255'
+      entity_id: light.antre
+    service: light.turn_on
+  alias: eve-giriş
+  condition: []
+  id: '1520967725331'
+  trigger:
+  - entity_id: binary_sensor.window__door_sensor
+    from: close
+    platform: state
+    to: open
