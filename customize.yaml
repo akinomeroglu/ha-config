@@ -1,0 +1,6 @@
+sensor.pressure_3:
+  friendly_name: outside-pressure
+sensor.humidity_2:
+  friendly_name: outside-humidty
+sensor.temperature_1:
+  friendly_name: outside-temp
