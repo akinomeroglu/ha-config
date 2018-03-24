@@ -40,5 +40,14 @@ salon_lamba:
       - light.sehpa
       - light.yemek_masa
 
+outside:
+    name: Dış Dünya
+    view: no
+    entities:
+      - sensor.ise_dogru
+      - sensor.humidity_2
+      - sensor.pressure_3
+      - sensor.temperature_1
+      - sensor.yr_symbol
 
 
