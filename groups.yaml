@@ -49,5 +49,8 @@ outside:
       - sensor.pressure_3
       - sensor.temperature_1
       - sensor.yr_symbol
-
+      - sensor.hava_durumu_symbol
+      - sensor.hava_durumu_precipitation
+      - sensor.hava_durumu_temperature
+      - sun.sun
 
