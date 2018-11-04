@@ -2,7 +2,7 @@ default_view:
     view: yes
     icon: mdi:home
     entities: 
-      - group.all_lights
+      - group.living_room_lights
       - group.outside
       - camera.dino
       - camera.salon
@@ -11,10 +11,7 @@ livingroom:
     name: living room
     view: yes
     entities:
-      - light.abajur
-      - light.sehpa
-      - light.tepe
-      - light.yemek_masa
+      - group.living_room_lights
       - media_player.echo_living_room
       - sensor.salon_temperature
       - camera.salon
@@ -27,7 +24,12 @@ bedroom:
       - group.bedroom_climate
       - camera.dino
       - media_player.echo_bedroom  
-         
+kitchen:
+    name: Kitchen
+    view: yes
+    entities: 
+      - light.kitchen
+      - media_player.echo_mutfak    
 doorway:  
     name: doorway
     view: yes
@@ -57,7 +59,7 @@ maintainance:
       - binary_sensor.dinocam_motion_sensor
       - group.tradfri_maintain
       - group.internet_maintain
-
+      - group.all_lights
 outside:
     name: Outside
     view: no
@@ -93,4 +95,12 @@ internet_maintain:
       - sensor.transmission_up_speed
       - sensor.fastcom_download
       - sensor.pihole_ads_blocked_today
-      - sensor.sonarr_upcoming  
+      - sensor.sonarr_upcoming 
+living_room_lights:
+    name: Living Room Lights
+    view: no
+    entities:
+      - light.abajur
+      - light.sehpa
+      - light.tepe
+      - light.yemek_masa
