@@ -1,56 +1,96 @@
-mutfak:
-    name: Mutfak
+default_view:
     view: yes
-    entities:
-        - light.mutfak
-
-salon:
-    name: Salon
-    view: yes
-    entities:
-        - group.salon
-        - light.tepe
-        - light.abajur
-        - light.yemek_masa
-        - light.sehpa
-        - media_player.kodi
-        - media_player.spotify
-        - media_player.amazon_fire_tv
-        - sensor.pressure
-        - sensor.humidity
-        - sensor.temperature
-        - switch.tv
-        - camera.salon
-        - group.salon_lamba
-
-koridor:         
-    name: Koridor
-    view: yes
+    icon: mdi:home
     entities: 
-      - light.koridor_2
-      - light.koridor
-      - light.yatak_koridor
-
-salon_lamba:
-    name: Salon
-    view: no
+      - group.all_lights
+      - group.outside
+      - camera.dino
+      - camera.salon
+      - camera.library  
+livingroom: 
+    name: living room
+    view: yes
     entities:
       - light.abajur
-      - light.tepe
       - light.sehpa
+      - light.tepe
       - light.yemek_masa
+      - media_player.echo_living_room
+      - sensor.salon_temperature
+      - camera.salon
+      - switch.salon_tv
+      - sensor.dinocam
+bedroom:
+    name: bedroom
+    view: yes
+    entities: 
+      - group.bedroom_climate
+      - camera.dino
+      - media_player.echo_bedroom  
+         
+doorway:  
+    name: doorway
+    view: yes
+    entities:
+      - light.doorway
+      - light.aisle
+      - light.short_aisle 
+      - binary_sensor.home_door  
+maintainance:
+    name: maintainance
+    view: yes
+#   icon: mdi:build
+    entities:
+      - switch.dinocam_h264_rtsp_server
+      - switch.dinocam_mjpeg_rtsp_server
+      - device_tracker.dinocam
+      - sensor.dinocam_light_sensor
+      - switch.dinocam_ir_filter
+      - switch.dinocam_ir_led
+      - switch.dinocam_night_mode
+      - switch.dinocam_night_mode_auto
+      - switch.dinocam_blue_led
+      - switch.dinocam_yellow_led
+      - switch.dinocam_motion_detection
+      - switch.dinocam_motion_tracking
+      - camera.dinocam_motion_snapshot
+      - binary_sensor.dinocam_motion_sensor
+      - group.tradfri_maintain
+      - group.internet_maintain
 
 outside:
-    name: Dış Dünya
+    name: Outside
     view: no
     entities:
-      - sensor.ise_dogru
-      - sensor.humidity_2
-      - sensor.pressure_3
-      - sensor.temperature_1
+      - sensor.outside_humidity
+      - sensor.outside_temp
+      - sensor.outside_pres
       - sensor.yr_symbol
-      - sensor.hava_durumu_symbol
-      - sensor.hava_durumu_precipitation
-      - sensor.hava_durumu_temperature
-      - sun.sun
-
+      - sun.sun  
+bedroom_climate:
+    name: Climate
+    view: no
+    entities: 
+      - sensor.yatak_odasi_nem
+      - sensor.bedroom_temo
+      - sensor.bedroom_pres   
+tradfri_maintain:
+    name: Tradfri
+    view: no
+    entities:
+      - sensor.tradfri_motion_sensor
+      - sensor.tradfri_remote_control
+      - sensor.tradfri_wireless_dimmer  
+internet_maintain:
+    name: Internet
+    view: no
+    entities: 
+      - sensor.transmission_active_torrents
+      - sensor.transmission_down_speed
+      - sensor.transmission_paused_torrents
+      - sensor.transmission_status
+      - sensor.transmission_total_torrents
+      - sensor.transmission_up_speed
+      - sensor.fastcom_download
+      - sensor.pihole_ads_blocked_today
+      - sensor.sonarr_upcoming  
