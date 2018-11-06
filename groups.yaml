@@ -1,12 +1,12 @@
-default_view:
-    view: yes
-    icon: mdi:home
-    entities: 
-      - group.living_room_lights
-      - group.outside
-      - camera.dino
-      - camera.salon
-      - camera.library  
+#default_view:
+#    view: yes
+#    icon: mdi:home
+#    entities: 
+#      - group.living_room_lights
+#      - group.outside
+#      - camera.dino
+#      - camera.salon
+#      - camera.library  
 livingroom: 
     name: living room
     view: yes
