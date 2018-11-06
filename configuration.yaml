@@ -10,26 +10,36 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: !secret tz
-
   # Customization file
-customize: !include customize.yaml
-
-# Show links to resources in log and frontend
-#introduction:
+  customize: !include customize.yaml
 
 # Enables the frontend
 frontend:
-
-#Enable HA cloud
-cloud:
 
 # Enables configuration UI
 config:
 
 http:
+  # Secrets are defined in the file secrets.yaml
+  api_password: !secret api
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
 
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
 updater:
   # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+  #
+mqtt:
+  broker: !secret broker
+  discovery: true
+  discovery_prefix: homeassistant
+# Discover some devices automatically
+discovery:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -48,130 +58,69 @@ sun:
 
 # Weather prediction
 sensor:
-#HızTesti
   - platform: fastdotcom
   - platform: yr
-#AyınDurumu
-  - platform: moon
+  - platform: moon  
   - platform: sensehat
     display_options:
-        - temperature
-        - humidity
-        - pressure
-
-#DistanceToHome
-  - platform: google_travel_time
-    name: Eve doğru
-    api_key: !secret gt_a
-    origin: device_tracker.akin_akin
-    destination: zone.home
-
-#DistanceToWork
-  - platform: google_travel_time
-    name: İşe doğru
-    api_key: !secret gt_a
-    origin: device_tracker.akin_akin
-    destination: zone.is
-
-#PiHoleStatistics
+      - temperature
+      - humidity
+      - pressure
   - platform: pi_hole
-    host: !secret ph_h
-
-#Transmission
   - platform: transmission
-    host: !secret tr_h
-    port: !secret tr_p
+    host: !secret transmission_host
+    port: 8080
     monitored_variables:
       - 'current_status'
       - 'download_speed'
       - 'upload_speed'
       - 'active_torrents'
-
-#HavaKalitesi
-  - platform: waqi
-    token: !secret wa_t
-    locations:
-    - !secret wa_l
-    stations:
-    - !secret wa_s
-
-#Sonarr
+      - 'paused_torrents'
+      - 'total_torrents'
   - platform: sonarr
-    api_key: !secret so_a
-    host: !secret so_h
-    port: !secret so_p
-    monitored_conditions:
-    - upcoming
-    - queue
-    days: 10
+    api_key: !secret sonar_api_key
+    host: !secret sonar_host
+    urlbase: sonar
+    days: 15
+    
 
-#ISS
 binary_sensor:
-  - platform: iss
-
-#Kodi(UsefulWhenActive)
-media_player:
-  - platform: kodi
-    host: !secret ko_h
-
-#FireTv
-  - platform: firetv
-    device: salon
-
-#Spotify
-  - platform: spotify
-    client_id: !secret sp_c
-    client_secret: !secret sp_s
-
-#SenseHatLight
-light:
-  platform: sensehat
-  name: SenseHAT
-
+  - platform: ffmpeg_noise
+    input: !secret salon_noise_input
+    name: salon    
+  - platform: ffmpeg_noise
+    input: !secret dino_noise_input
+    name: dino
+    extra_arguments: -filter:a highpass=f=300,lowpass=f=250 -codec:a libmp3lame -ar 16000
 # Text to speech
 tts:
   - platform: google
 
-#IKEA Tradfri
-tradfri:
-    host: !secret tf_h
-    allow_tradfri_groups: false
+# Cloud
+cloud:
 
-#TV Ünitesi
 switch:
   - platform: tplink
     host: !secret tp_h
-    name: tv
 
-#Kamera
-camera:
-  - platform: rpi_camera
-    name: salon
-
-#mqtt
-mqtt:
-    broker: !secret mq_h
-    username: !secret mq_a
-    password: !secret mq_u
-    port: !secret mq_p
-    client_id: mq_c
-    certificate: /etc/ssl/certs/ca-certificates.crt
-
-device_tracker:
-  - platform: owntracks
-  - platform: bluetooth_tracker
-zone:
-  - name: İş
-    latitude: !secret i_lt
-    longitude: !secret i_lg
-    radius: 100
-    icon: mdi:work
-
+media_player:
+  - platform: alexa
+    email: !secret amazon_user
+    password: !secret amazon_pass
+    url: amazon.com
+  - platform: kodi
+    host: !secret fire_host 
+  - platform: firetv
+    name: FireTv
+    host: !secret fire_host
+    adbkey: /home/homeassistant/.android/adbkey
 deconz:
-  host: !secret dc_h
-  api_key: !secret dc_a
-  port: !secret dc_p
+  host: !secret deconz_host    
 
+homekit:
+upnp:
+ios:
+camera: !include camera.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
