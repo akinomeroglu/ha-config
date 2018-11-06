@@ -58,15 +58,19 @@ sun:
 
 # Weather prediction
 sensor:
+#Internet speed test
   - platform: fastdotcom
   - platform: yr
-  - platform: moon  
+  - platform: moon
+#Sensehat sensors for living room  
   - platform: sensehat
     display_options:
       - temperature
       - humidity
       - pressure
+#PiHole stats
   - platform: pi_hole
+#Torrent stats
   - platform: transmission
     host: !secret transmission_host
     port: 8080
