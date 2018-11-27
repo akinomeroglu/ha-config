@@ -12,10 +12,12 @@ livingroom:
     view: yes
     entities:
       - group.living_room_lights
+      - group.livingroom_climate
       - media_player.echo_living_room
       - sensor.salon_temperature
       - camera.salon
       - switch.salon_tv
+      - switch.tradfri_control_outlet
       - sensor.dinocam
 bedroom:
     name: bedroom
@@ -76,6 +78,13 @@ bedroom_climate:
       - sensor.yatak_odasi_nem
       - sensor.bedroom_temo
       - sensor.bedroom_pres   
+livingroom_climate:
+    name: Climate
+    view: no
+    entities:
+      - sensor.salon_temp
+      - sensor.salon_pressure
+      - sensor.salon_humidity
 tradfri_maintain:
     name: Tradfri
     view: no
