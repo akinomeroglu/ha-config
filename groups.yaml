@@ -5,7 +5,7 @@ default_view:
       - group.living_room_lights
       - group.outside
       - camera.dino
-      - camera.salon
+      - camera.living_room
       - camera.library  
 livingroom: 
     name: living room
@@ -16,7 +16,7 @@ livingroom:
       - media_player.echo_living_room
       - media_player.firetv
       - sensor.salon_temperature
-      - camera.salon
+      - camera.living_room
       - switch.salon_tv
       - switch.tradfri_control_outlet
       - sensor.dinocam
