@@ -14,6 +14,7 @@ livingroom:
       - group.living_room_lights
       - group.livingroom_climate
       - media_player.echo_living_room
+      - media_player.firetv
       - sensor.salon_temperature
       - camera.salon
       - switch.salon_tv
@@ -91,7 +92,8 @@ tradfri_maintain:
     entities:
       - sensor.tradfri_motion_sensor
       - sensor.tradfri_remote_control
-      - sensor.tradfri_wireless_dimmer  
+      - sensor.tradfri_wireless_dimmer
+      - sensor.tradfri_onoff_switch   
 internet_maintain:
     name: Internet
     view: no
