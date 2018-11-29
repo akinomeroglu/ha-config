@@ -46,23 +46,11 @@ maintainance:
     view: yes
 #   icon: mdi:build
     entities:
-      - switch.dinocam_h264_rtsp_server
-      - switch.dinocam_mjpeg_rtsp_server
-      - device_tracker.dinocam
-      - sensor.dinocam_light_sensor
-      - switch.dinocam_ir_filter
-      - switch.dinocam_ir_led
-      - switch.dinocam_night_mode
-      - switch.dinocam_night_mode_auto
-      - switch.dinocam_blue_led
-      - switch.dinocam_yellow_led
-      - switch.dinocam_motion_detection
-      - switch.dinocam_motion_tracking
-      - camera.dinocam_motion_snapshot
       - binary_sensor.dinocam_motion_sensor
       - group.tradfri_maintain
       - group.internet_maintain
       - group.all_lights
+      - group.saloncam
 outside:
     name: Outside
     view: no
@@ -115,3 +103,23 @@ living_room_lights:
       - light.sehpa
       - light.tepe
       - light.yemek_masa
+saloncam:
+    name: Salon Camera
+    view: no
+    entities:
+      - switch.dinocam_h264_rtsp_server
+      - switch.dinocam_mjpeg_rtsp_server
+      - device_tracker.dinocam
+      - sensor.dinocam_light_sensor
+      - switch.dinocam_ir_filter
+      - switch.dinocam_ir_led
+      - switch.dinocam_night_mode
+      - switch.dinocam_night_mode_auto
+      - switch.dinocam_blue_led
+      - switch.dinocam_yellow_led
+      - switch.dinocam_motion_detection
+      - switch.dinocam_motion_tracking
+      - camera.dinocam_motion_snapshot
+      - binary_sensor.dinocam_motion_sensor
+      - cover.dinocam_move_leftright
+      - cover.dinocam_move_updown
