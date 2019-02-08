@@ -1,1 +1,38 @@
-[]
+- id: '1548790709733'
+  alias: door_lights_on
+  trigger:
+  - entity_id: binary_sensor.window_door_sensor
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: light.doorway
+    service: light.turn_on
+- id: '1548791924476'
+  alias: closet_lights_on
+  trigger:
+  - entity_id: binary_sensor.closet_door
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: light.doorway
+    service: light.turn_on
+- id: '1548794864250'
+  alias: door_lights_off
+  trigger:
+  - entity_id: binary_sensor.window_door_sensor
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - alias: ''
+    data:
+      entity_id: light.doorway
+      transition: '120'
+    service: light.turn_off
