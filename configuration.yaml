@@ -13,6 +13,9 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
 
+#Enables system health:
+system_health:
+  
 # Enables the frontend
 frontend:
 
@@ -44,14 +47,33 @@ logbook:
 # Enables a map showing the location of tracked devices
 map:
 
+#Torrent stats
+transmission:
+  host: !secret transmission_host
+  port: 8080
+  monitored_conditions:
+    - 'current_status'
+    - 'download_speed'
+    - 'upload_speed'
+    - 'active_torrents'
+    - 'paused_torrents'
+    - 'total_torrents'
+
+device_tracker:
+  - platform: unifi_direct
+    host: !secret unifi_host
+    username: !secret unifi_user
+    password: !secret unifi_password
+
 # Track the sun
 sun:
-
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api    
 sensor:
 #Internet speed test
   - platform: fastdotcom
 #Weather prediction
-  - platform: yr
   - platform: moon
 #Sensehat sensors for living room  
   - platform: sensehat
@@ -59,19 +81,10 @@ sensor:
       - temperature
       - humidity
       - pressure
+
 #PiHole stats
   - platform: pi_hole
-#Torrent stats
-  - platform: transmission
-    host: !secret transmission_host
-    port: 8080
-    monitored_variables:
-      - 'current_status'
-      - 'download_speed'
-      - 'upload_speed'
-      - 'active_torrents'
-      - 'paused_torrents'
-      - 'total_torrents'
+
 #Sonar stats
   - platform: sonarr
     api_key: !secret sonar_api_key
