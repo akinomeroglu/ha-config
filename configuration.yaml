@@ -24,7 +24,6 @@ config:
 
 http:
   # Secrets are defined in the file secrets.yaml
-  api_password: !secret api
 updater:
 
 #Usinig mosquitto instead of embedded broker
@@ -131,7 +130,6 @@ deconz:
   host: !secret deconz_host    
 
 homekit:
-upnp:
 ios:
 
 #Included files
