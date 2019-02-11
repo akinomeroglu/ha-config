@@ -91,15 +91,7 @@ sensor:
     urlbase: sonar
     days: 15
     
-binary_sensor:
-  #Noise Sensors
-  - platform: ffmpeg_noise
-    input: !secret salon_noise_input
-    name: salon    
-  - platform: ffmpeg_noise
-    input: !secret dino_noise_input
-    name: dino
-    extra_arguments: -filter:a highpass=f=300,lowpass=f=250 -codec:a libmp3lame -ar 16000
+
 # Text to speech
 tts:
   - platform: google
