@@ -13,37 +13,44 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
 
+#Person
+person:
+
+#Enables default configuration updates:
+default_config:
+
 #Enables system health:
 system_health:
   
-# Enables the frontend
+#Enables the frontend
 frontend:
 
-# Enables configuration UI
+#Enables configuration UI
 config:
 
+#HTTP settings for frontend
 http:
-  # Secrets are defined in the file secrets.yaml
+
 updater:
 
-#Usinig mosquitto instead of embedded broker
+#Using mosquitto instead of embedded broker
 mqtt:
   broker: !secret broker
   discovery: true
   discovery_prefix: homeassistant
-# Discover some devices automatically
+#Discover some devices automatically
 discovery:
 
-# Allows you to issue voice commands from the frontend in enabled browsers
+#Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
 
-# Enables support for tracking state changes over time
+#Enables support for tracking state changes over time
 history:
 
-# View all events in a logbook
+#View all events in a logbook
 logbook:
 
-# Enables a map showing the location of tracked devices
+#Enables a map showing the location of tracked devices
 map:
 
 #Torrent stats
@@ -70,8 +77,6 @@ weather:
   - platform: darksky
     api_key: !secret darksky_api    
 sensor:
-#Internet speed test
-  - platform: fastdotcom
 #Weather prediction
   - platform: moon
 #Sensehat sensors for living room  
@@ -80,6 +85,9 @@ sensor:
       - temperature
       - humidity
       - pressure
+
+#Internet speed test
+fastdotcom:
 
 #PiHole stats
   - platform: pi_hole
