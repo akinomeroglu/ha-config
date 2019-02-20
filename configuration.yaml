@@ -85,27 +85,22 @@ sensor:
       - temperature
       - humidity
       - pressure
-
-#Internet speed test
-fastdotcom:
-
 #PiHole stats
   - platform: pi_hole
-
 #Sonar stats
   - platform: sonarr
     api_key: !secret sonar_api_key
     host: !secret sonar_host
     urlbase: sonar
     days: 15
-    
 
+#Internet speed test
+fastdotcom:
 # Text to speech
 tts:
   - platform: google
 # Cloud
 cloud:
-
 switch:
 #TV Unit
   - platform: tplink
