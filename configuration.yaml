@@ -105,13 +105,15 @@ switch:
 #TV Unit
   - platform: tplink
     host: !secret tp_h
+#Amazon echo's
+alexa_media:
+  accounts:
+    - email: !secret amazon_user
+      password: !secret amazon_pass
+      url: amazon.com
 
 media_player:
-#Amazon echo's
-  - platform: alexa
-    email: !secret amazon_user
-    password: !secret amazon_pass
-    url: amazon.com
+
 #Kodi
   - platform: kodi
     host: !secret fire_host 
