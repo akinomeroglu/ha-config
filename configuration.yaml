@@ -99,12 +99,12 @@ fastdotcom:
 # Text to speech
 tts:
   - platform: google
+#TV Unit
+tplink:
+  switch:
+    - host: !secret tp_h
 # Cloud
 cloud:
-switch:
-#TV Unit
-  - platform: tplink
-    host: !secret tp_h
 #Amazon echo's
 alexa_media:
   accounts:
