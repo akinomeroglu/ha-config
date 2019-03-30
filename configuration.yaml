@@ -113,12 +113,11 @@ alexa_media:
       url: amazon.com
 
 media_player:
-
 #Kodi
   - platform: kodi
     host: !secret fire_host 
 #FireTV
-  - platform: firetv
+  - platform: androidtv
     name: FireTv
     host: !secret fire_host
     adbkey: /home/homeassistant/.android/adbkey
