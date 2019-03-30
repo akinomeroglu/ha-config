@@ -8,6 +8,7 @@
   condition: []
   action:
   - data:
+      brightness: '255'
       entity_id: light.doorway
     service: light.turn_on
 - id: '1548791924476'
@@ -20,6 +21,7 @@
   condition: []
   action:
   - data:
+      brightness: '255'
       entity_id: light.doorway
     service: light.turn_on
 - id: '1548794864250'
