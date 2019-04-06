@@ -114,11 +114,10 @@ alexa_media:
       password: !secret amazon_pass
       url: amazon.com
 
-media_player:
+#media_player:
 #Kodi
-  - platform: kodi
-    host: !secret fire_host 
-
+ # - platform: kodi
+ #   host: !secret fire_host 
 #FireTV 
 #  - platform: androidtv
 #    name: FireTv
