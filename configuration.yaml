@@ -118,11 +118,13 @@ media_player:
 #Kodi
   - platform: kodi
     host: !secret fire_host 
-#FireTV
-  - platform: androidtv
-    name: FireTv
-    host: !secret fire_host
-    adbkey: /home/homeassistant/.android/adbkey
+
+#FireTV 
+#  - platform: androidtv
+#    name: FireTv
+#    host: !secret fire_host
+#    adbkey: /home/homeassistant/.android/adbkey
+
 #Raspbee host for zigbee devices
 deconz:
   host: !secret deconz_host    
