@@ -16,6 +16,8 @@ homeassistant:
 #Person
 person:
 
+#Enables stream
+stream:
 #Enables default configuration updates:
 default_config:
 
