@@ -89,9 +89,7 @@ sensor:
 
 #Internet speed test
 fastdotcom:
-# Text to speech
-tts:
-  - platform: google
+
 #TV Unit
 tplink:
   switch:
@@ -106,8 +104,8 @@ alexa_media:
       url: amazon.com
 
 #Raspbee host for zigbee devices
-deconz:
-  host: !secret deconz_host    
+#deconz:
+#  host: !secret deconz_host    
 
 homekit:
 ios:
