@@ -41,9 +41,14 @@ updater:
 
 #Using mosquitto instead of embedded broker
 mqtt:
-  broker: !secret broker
+  broker: !secret mqttbroker
+  username: !secret mqttusername
+  password: !secret mqttpassword
+  client_id: !secret mqttclientid 
   discovery: true
   discovery_prefix: homeassistant
+
+  
 #Discover some devices automatically
 discovery:
 
@@ -58,18 +63,6 @@ logbook:
 
 #Enables a map showing the location of tracked devices
 map:
-
-#Torrent stats
-transmission:
-  host: !secret transmission_host
-  port: 8080
-  monitored_conditions:
-    - 'current_status'
-    - 'download_speed'
-    - 'upload_speed'
-    - 'active_torrents'
-    - 'paused_torrents'
-    - 'total_torrents'
 
 device_tracker:
   - platform: unifi_direct
@@ -93,12 +86,6 @@ sensor:
       - pressure
 #PiHole stats
   - platform: pi_hole
-#Sonar stats
-  - platform: sonarr
-    api_key: !secret sonar_api_key
-    host: !secret sonar_host
-    urlbase: sonar
-    days: 15
 
 #Internet speed test
 fastdotcom:
@@ -117,16 +104,6 @@ alexa_media:
     - email: !secret amazon_user
       password: !secret amazon_pass
       url: amazon.com
-
-#media_player:
-#Kodi
- # - platform: kodi
- #   host: !secret fire_host 
-#FireTV 
-#  - platform: androidtv
-#    name: FireTv
-#    host: !secret fire_host
-#    adbkey: /home/homeassistant/.android/adbkey
 
 #Raspbee host for zigbee devices
 deconz:
