@@ -81,12 +81,6 @@ weather:
 sensor:
 #Weather prediction
   - platform: moon
-#Sensehat sensors for living room  
-  - platform: sensehat
-    display_options:
-      - temperature
-      - humidity
-      - pressure
 #PiHole stats
   - platform: pi_hole
 #Sonar stats
