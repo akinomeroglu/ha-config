@@ -104,9 +104,9 @@ alexa_media:
 tradfri:
   host: !secret tradfri_ip
 
-yeelight:
-  devices: 
-    !secret yeelight_ip
+#yeelight:
+#  devices: 
+#    !secret yeelight_ip
 
 homekit:
 mobile_app:
