@@ -13,6 +13,12 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
 
+#Enables default configuration updates:
+default_config:
+
+# Cloud
+cloud:
+
 #Lovelace
 lovelace:
   mode: yaml
@@ -22,8 +28,6 @@ person:
 
 #Enables stream
 stream:
-#Enables default configuration updates:
-default_config:
 
 #Enables system health:
 system_health:
@@ -86,10 +90,10 @@ fastdotcom:
 
 #TV Unit
 tplink:
+  discovery: false
   switch:
     - host: !secret tp_h
-# Cloud
-cloud:
+
 #Amazon echo's
 alexa_media:
   accounts:
