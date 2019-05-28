@@ -105,7 +105,7 @@ yeelight:
     !secret yeelight_ip
 
 homekit:
-ios:
+mobile_app:
 
 #Included files
 camera: !include camera.yaml
