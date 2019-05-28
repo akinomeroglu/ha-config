@@ -97,9 +97,8 @@ alexa_media:
       password: !secret amazon_pass
       url: amazon.com
 
-#Raspbee host for zigbee devices
-#deconz:
-#  host: !secret deconz_host    
+tradfri:
+  host: !secret tradfri_ip
 
 homekit:
 ios:
