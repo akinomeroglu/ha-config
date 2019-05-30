@@ -6,46 +6,21 @@ views:
       - binary_sensor.livingroomcam_motion_sensor
       - binary_sensor.remote_ui
       - person.akin_omeroglu
-      - device_tracker.a0550cde11e94063b82fdbf58c823553
-      - device_tracker.215b0e16ad274b3cb8c76d57d95b816d
       - sensor.yr_symbol
-      - sensor.salon_2
       - sensor.outside_3
       - sensor.dimmer_switch_battery_level
       - sensor.yatak_odasi
       - sensor.daylight
-      - sensor.salon_3
       - sensor.yatak_odasi_2
-      - sensor.salon
       - sensor.yatak_odasi_3
       - sensor.outside
       - sensor.outside_2
-      - sensor.floors_ascended_5
-      - sensor.connection_type_7
-      - sensor.distance_5
-      - sensor.sim_1_5
-      - sensor.floors_descended_5
-      - sensor.steps_5
-      - sensor.ssid_6
-      - sensor.geocoded_location_6
-      - sensor.activity_7
-      - sensor.battery_level_6
-      - sensor.last_update_trigger_7
-      - sensor.average_active_pace_3
-      - sensor.battery_state_6
-      - sensor.bssid_8
       - sensor.livingroomcam_light_sensor
-      - sensor.huawei_home_gateway_packets_sec_received
-      - sensor.huawei_home_gateway_kbyte_sec_sent
-      - sensor.huawei_home_gateway_packets_sec_sent
-      - sensor.huawei_home_gateway_kbyte_sec_received
       - sensor.tradfri_motion_sensor
       - sensor.tradfri_on_off_switch
       - sensor.tradfri_remote_control
       - sun.sun
     cards:
-      - entity: camera.livingroomcam_motion_snapshot
-        type: picture-entity
       - entities:
           - cover.livingroomcam_move_up_down
           - cover.livingroomcam_move_left_right
@@ -92,6 +67,8 @@ views:
     title: Home
   - badges: []
     cards:
+      - type: media-control
+        entity: media_player.echo_livingroom
       - entities:
           - entity: light.tepe
           - entity: light.yemek_masa
