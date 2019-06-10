@@ -1,4 +1,4 @@
-title: Home
+title: OmerogluHQ
 views:
   - badges:
       - binary_sensor.closet_door
@@ -7,37 +7,47 @@ views:
       - binary_sensor.remote_ui
       - person.akin_omeroglu
       - sensor.yr_symbol
+      - sensor.salon_2
       - sensor.outside_3
       - sensor.dimmer_switch_battery_level
       - sensor.yatak_odasi
       - sensor.daylight
+      - sensor.salon_3
       - sensor.yatak_odasi_2
+      - sensor.salon
       - sensor.yatak_odasi_3
       - sensor.outside
       - sensor.outside_2
+      - sensor.floors_ascended_5
+      - sensor.connection_type_7
+      - sensor.distance_5
+      - sensor.sim_1_5
+      - sensor.floors_descended_5
+      - sensor.steps_5
+      - sensor.ssid_6
+      - sensor.geocoded_location_6
       - sensor.livingroomcam_light_sensor
       - sensor.tradfri_motion_sensor
       - sensor.tradfri_on_off_switch
       - sensor.tradfri_remote_control
       - sun.sun
     cards:
+      - entity: camera.livingroomcam_motion_snapshot
+        type: picture-entity
       - entities:
           - cover.livingroomcam_move_up_down
           - cover.livingroomcam_move_left_right
         title: Panjur
         type: entities
       - entities:
-          - entity: light.dino_two
           - entity: light.balcony
           - entity: light.doorway
-          - entity: light.dino_one
           - entity: light.balcony_2
           - entity: light.doorway_2
           - entity: light.child_room
-          - entity: light.mutfak
           - entity: light.yatak_koridor
-          - entity: light.abajur
           - entity: light.koridor
+        show_header_toggle: false
         title: Işık
         type: entities
       - entity: media_player.oturma_odasi
@@ -67,19 +77,43 @@ views:
     title: Home
   - badges: []
     cards:
-      - type: media-control
-        entity: media_player.echo_livingroom
+      - entity: media_player.echo_livingroom
+        type: media-control
       - entities:
           - entity: light.tepe
           - entity: light.yemek_masa
           - entity: light.abajur
           - entity: light.sehpa
         show_header_toggle: false
-        title: Lights
+        title: Living Room Lights
         type: entities
       - camera_view: live
-        entity: camera.ffmpeg
+        entity: camera.salon
         name: Living Room Camera
         type: picture-entity
+      - entities:
+          - entity: sensor.livingroom_humidity
+          - entity: sensor.living_room_pressure
+          - entity: switch.livingroomcam_h264_rtsp_server
+          - entity: switch.salon_tv
+        show_name: false
+        type: glance
+      - entity: sensor.living_room_temperature
+        hours_to_show: 24
+        type: sensor
     path: livingroom
     title: Living Room
+  - badges: []
+    cards:
+      - entity: light.kitchen
+        name: Kitchen Light
+        type: light
+      - entity: media_player.echo_kitchen
+        type: media-control
+    path: kitchen
+    title: Kitchen
+  - badges: []
+    cards: []
+    path: dino
+    title: Dino's Room
+
