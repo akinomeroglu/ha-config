@@ -16,6 +16,10 @@ homeassistant:
 #Enables default configuration updates:
 default_config:
 
+#Logger
+logger:
+  default: debug
+
 # Cloud
 cloud:
 
