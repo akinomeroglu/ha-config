@@ -121,6 +121,11 @@ telegram_bot:
     allowed_chat_ids:
       - !secret akin_telegram_id
 
+notify: 
+  - name: telegram_notification
+    platform: telegram
+    chat_id: !secret akin_telegram_id
+
 #Included files
 camera: !include camera.yaml
 group: !include groups.yaml
