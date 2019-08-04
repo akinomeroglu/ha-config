@@ -1,92 +1,28 @@
 title: OmerogluHQ
 views:
   - badges:
-      - binary_sensor.closet_door
-      - binary_sensor.main_door
-      - binary_sensor.livingroomcam_motion_sensor
       - binary_sensor.remote_ui
-      - person.akin_omeroglu
-      - sensor.yr_symbol
-      - sensor.salon_2
-      - sensor.outside_3
-      - sensor.dimmer_switch_battery_level
-      - sensor.yatak_odasi
-      - sensor.daylight
-      - sensor.salon_3
-      - sensor.yatak_odasi_2
-      - sensor.salon
-      - sensor.yatak_odasi_3
-      - sensor.outside
-      - sensor.outside_2
-      - sensor.floors_ascended_5
-      - sensor.connection_type_7
-      - sensor.distance_5
-      - sensor.sim_1_5
-      - sensor.floors_descended_5
-      - sensor.steps_5
-      - sensor.ssid_6
-      - sensor.geocoded_location_6
-      - sensor.livingroomcam_light_sensor
-      - sensor.tradfri_motion_sensor
-      - sensor.tradfri_on_off_switch
-      - sensor.tradfri_remote_control
-      - sun.sun
     cards:
       - entity: camera.livingroomcam_motion_snapshot
         type: picture-entity
+      - entity: weather.dark_sky
+        name: Weather
+        type: weather-forecast
       - entities:
-          - cover.livingroomcam_move_up_down
-          - cover.livingroomcam_move_left_right
-        title: Panjur
-        type: entities
-      - entities:
-          - entity: light.balcony
-          - entity: light.doorway
-          - entity: light.balcony_2
-          - entity: light.doorway_2
-          - entity: light.child_room
-          - entity: light.yatak_koridor
-          - entity: light.koridor
-        show_header_toggle: false
-        title: Işık
-        type: entities
-      - entity: media_player.oturma_odasi
-        type: media-control
-      - entities:
-          - remote.oturma_odasi
-        title: Uzaktan Kumanda
-        type: entities
-      - entities:
-          - switch.livingroomcam_motion_detection
-          - switch.livingroomcam_motion_send_mail
-          - switch.livingroomcam_motion_send_telegram
-          - switch.livingroomcam_motion_tracking
-          - switch.livingroomcam_blue_led
-          - switch.livingroomcam_yellow_led
-          - switch.livingroomcam_ir_led
-          - switch.livingroomcam_ir_filter
-          - switch.salon_tv
-          - switch.livingroomcam_night_mode
-          - switch.livingroomcam_night_mode_auto
-          - switch.livingroomcam_h264_rtsp_server
-          - switch.livingroomcam_mjpeg_rtsp_server
-          - switch.tradfri_control_outlet
-        title: Anahtar
-        type: entities
+          - entity: person.akin_omeroglu
+          - entity: zone.home
+        type: map
+    icon: 'mdi:home'
     path: default_view
     title: Home
   - badges: []
     cards:
+      - entity: sensor.living_room_temperature
+        graph: line
+        hours_to_show: 24
+        type: sensor
       - entity: media_player.echo_livingroom
         type: media-control
-      - entities:
-          - entity: light.tepe
-          - entity: light.yemek_masa
-          - entity: light.abajur
-          - entity: light.sehpa
-        show_header_toggle: false
-        title: Living Room Lights
-        type: entities
       - camera_view: live
         entity: camera.salon
         name: Living Room Camera
@@ -98,9 +34,15 @@ views:
           - entity: switch.salon_tv
         show_name: false
         type: glance
-      - entity: sensor.living_room_temperature
-        hours_to_show: 24
-        type: sensor
+      - entities:
+          - entity: light.ceiling_lamp
+          - entity: light.table_lamp
+          - entity: light.lampshade
+          - entity: light.coffee_table
+        show_header_toggle: false
+        title: Living Room Lights
+        type: entities
+    icon: 'mdi:ceiling-light'
     path: livingroom
     title: Living Room
   - badges: []
@@ -110,10 +52,81 @@ views:
         type: light
       - entity: media_player.echo_kitchen
         type: media-control
+    icon: 'mdi:fridge'
     path: kitchen
     title: Kitchen
   - badges: []
-    cards: []
+    cards:
+      - detail: 2
+        entity: sensor.child_room_temperature
+        graph: line
+        hours_to_show: 24
+        name: Temperature
+        type: sensor
+      - entity: sensor.yatak_odasi_2
+        graph: line
+        name: Humidity
+        type: sensor
+      - entity: light.child_room
+        name: Dino's Light
+        type: light
+    icon: 'mdi:baby-buggy'
     path: dino
     title: Dino's Room
+  - badges: []
+    cards:
+      - entity: media_player.echo_library
+        type: media-control
+      - entities:
+          - entity: switch.library_light
+        show_icon: true
+        show_name: false
+        title: Library Light
+        type: glance
+    icon: 'mdi:library'
+    panel: false
+    path: library
+    title: Library
+  - badges: []
+    cards:
+      - entity: sensor.outside_temperature
+        graph: line
+        type: sensor
+      - entity: light.balcony
+        name: Balcony Light
+        type: light
+      - entity: sensor.outside_humidity
+        graph: line
+        type: sensor
+    icon: 'mdi:tree'
+    path: balcony
+    title: Balcony
+  - badges: []
+    cards:
+      - entities:
+          - entity: binary_sensor.main_door
+          - entity: binary_sensor.closet_door
+        show_icon: true
+        show_state: true
+        title: Doors
+        type: glance
+      - entities:
+          - entity: light.corridor
+          - entity: light.bedroom_hall
+          - entity: light.doorway
+        title: Lights
+        type: glance
+    icon: 'mdi:door'
+    path: aisle
+    title: Aisle
+  - badges: []
+    cards: []
+    icon: 'mdi:earth'
+    path: outside
+    title: Outside
+  - badges: []
+    cards: []
+    icon: 'mdi:wrench'
+    path: tools
+    title: Tools
 
