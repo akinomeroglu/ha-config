@@ -2,8 +2,8 @@ living_room_lights:
     name: Living Room Lights
     view: no
     entities:
-      - light.abajur
-      - light.sehpa
-      - light.tepe
-      - light.yemek_masa
+      - light.ceiling_lamp
+      - light.table_lamp
+      - light.coffee_table
+      - light.lampshade
 
