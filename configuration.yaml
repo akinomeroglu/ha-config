@@ -115,6 +115,12 @@ tradfri:
 homekit:
 mobile_app:
 
+telegram_bot:
+  - platform: polling
+  - api_key: !secret telegram_api_key
+  - allowed_chat_ids:
+      - !secret akin_telegram_id
+
 #Included files
 camera: !include camera.yaml
 group: !include groups.yaml
