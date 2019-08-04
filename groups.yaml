@@ -6,4 +6,11 @@ living_room_lights:
       - light.table_lamp
       - light.coffee_table
       - light.lampshade
+hall_lights:
+    name: Corridor Lights
+    view: no
+    entities:
+      - light.corridor
+      - light.doorway
+      - light.bedroom_hall
 
