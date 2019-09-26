@@ -108,9 +108,10 @@ alexa_media:
 tradfri:
   host: !secret tradfri_ip
 
-#yeelight:
-#  devices: 
-#    !secret yeelight_ip
+yeelight:
+  devices: 
+    192.168.1.46:
+      name: Bedroom Light 
 
 homekit:
 mobile_app:
