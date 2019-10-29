@@ -25,7 +25,8 @@ cloud:
 
 #Lovelace
 lovelace:
-  mode: yaml
+# Disable yaml for testing
+# mode: yaml
 
 #Person
 person:
