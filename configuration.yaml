@@ -89,7 +89,8 @@ sensor:
 #Weather prediction
   - platform: moon
 #PiHole stats
-  - platform: pi_hole
+pi_hole:
+  host: !secret pi_a
 
 #Internet speed test
 fastdotcom:
