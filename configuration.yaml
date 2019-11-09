@@ -18,7 +18,7 @@ default_config:
 
 #Logger
 logger:
-  default: debug
+  default: info
 
 # Cloud
 cloud:
@@ -117,16 +117,16 @@ yeelight:
 homekit:
 mobile_app:
 
-telegram_bot:
-  - platform: polling
-    api_key: !secret telegram_api_key
-    allowed_chat_ids:
-      - !secret akin_telegram_id
-
-notify: 
-  - name: telegram_notification
-    platform: telegram
-    chat_id: !secret akin_telegram_id
+#telegram_bot:
+#  - platform: polling
+#    api_key: !secret telegram_api_key
+#    allowed_chat_ids:
+#      - !secret akin_telegram_id
+#
+#notify: 
+#  - name: telegram_notification
+#    platform: telegram
+#    chat_id: !secret akin_telegram_id
 
 #Included files
 camera: !include camera.yaml
