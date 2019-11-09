@@ -9,8 +9,8 @@ from homeassistant.components.media_player import (
     MediaPlayerDevice, PLATFORM_SCHEMA)
 from homeassistant.components.media_player.const import (
     SUPPORT_TURN_OFF, SUPPORT_TURN_ON, SUPPORT_PREVIOUS_TRACK,
-    SUPPORT_NEXT_TRACK, SUPPORT_VOLUME_STEP,SUPPORT_VOLUME_MUTE, 
-    SUPPORT_SELECT_SOURCE, MEDIA_TYPE_CHANNEL)
+    SUPPORT_NEXT_TRACK, SUPPORT_VOLUME_STEP, SUPPORT_VOLUME_SET,
+    SUPPORT_VOLUME_MUTE, SUPPORT_SELECT_SOURCE, MEDIA_TYPE_CHANNEL)
 from homeassistant.const import (
     CONF_NAME, STATE_OFF, STATE_ON, STATE_UNKNOWN)
 from homeassistant.core import callback
@@ -22,20 +22,23 @@ from .controller import Controller
 _LOGGER = logging.getLogger(__name__)
 
 DEFAULT_NAME = "SmartIR Media Player"
+DEFAULT_DEVICE_CLASS = "tv"
 
 CONF_UNIQUE_ID = 'unique_id'
 CONF_DEVICE_CODE = 'device_code'
-CONF_CONTROLLER_SEND_SERVICE = "controller_send_service"
-CONF_CONTROLLER_COMMAND_TOPIC = "controller_command_topic"
+CONF_CONTROLLER_DATA = "controller_data"
 CONF_POWER_SENSOR = 'power_sensor'
+CONF_SOURCE_NAMES = 'source_names'
+CONF_DEVICE_CLASS = 'device_class'
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_UNIQUE_ID): cv.string,
     vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
     vol.Required(CONF_DEVICE_CODE): cv.positive_int,
-    vol.Required(CONF_CONTROLLER_SEND_SERVICE): cv.entity_id,
-    vol.Optional(CONF_CONTROLLER_COMMAND_TOPIC): cv.string,
-    vol.Optional(CONF_POWER_SENSOR): cv.entity_id
+    vol.Required(CONF_CONTROLLER_DATA): cv.string,
+    vol.Optional(CONF_POWER_SENSOR): cv.entity_id,
+    vol.Optional(CONF_SOURCE_NAMES): dict,
+    vol.Optional(CONF_DEVICE_CLASS, default=DEFAULT_DEVICE_CLASS): cv.string
 })
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
@@ -62,9 +65,9 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
             Helper.downloader(codes_source.format(device_code), device_json_path)
         except:
             _LOGGER.error("There was an error while downloading the device Json file. " \
-                          "Please check your internet connection or the device code " \
+                          "Please check your internet connection or if the device code " \
                           "exists on GitHub. If the problem still exists please " \
-                          "place the file manually in the proper location.")
+                          "place the file manually in the proper directory.")
             return
 
     with open(device_json_path) as j:
@@ -84,8 +87,7 @@ class SmartIRMediaPlayer(MediaPlayerDevice, RestoreEntity):
         self._unique_id = config.get(CONF_UNIQUE_ID)
         self._name = config.get(CONF_NAME)
         self._device_code = config.get(CONF_DEVICE_CODE)
-        self._controller_send_service = config.get(CONF_CONTROLLER_SEND_SERVICE)
-        self._controller_command_topic = config.get(CONF_CONTROLLER_COMMAND_TOPIC)
+        self._controller_data = config.get(CONF_CONTROLLER_DATA)
         self._power_sensor = config.get(CONF_POWER_SENSOR)
 
         self._manufacturer = device_data['manufacturer']
@@ -98,6 +100,8 @@ class SmartIRMediaPlayer(MediaPlayerDevice, RestoreEntity):
         self._sources_list = []
         self._source = None
         self._support_flags = 0
+
+        self._device_class = config.get(CONF_DEVICE_CLASS)
 
         #Supported features
         if 'off' in self._commands and self._commands['off'] is not None:
@@ -114,13 +118,20 @@ class SmartIRMediaPlayer(MediaPlayerDevice, RestoreEntity):
 
         if ('volumeDown' in self._commands and self._commands['volumeDown'] is not None) \
         or ('volumeUp' in self._commands and self._commands['volumeUp'] is not None):
-            self._support_flags = self._support_flags | SUPPORT_VOLUME_STEP
+            self._support_flags = self._support_flags | SUPPORT_VOLUME_STEP | SUPPORT_VOLUME_SET
 
         if 'mute' in self._commands and self._commands['mute'] is not None:
             self._support_flags = self._support_flags | SUPPORT_VOLUME_MUTE
 
         if 'sources' in self._commands and self._commands['sources'] is not None:
             self._support_flags = self._support_flags | SUPPORT_SELECT_SOURCE
+
+            for source, new_name in config.get(CONF_SOURCE_NAMES, {}).items():
+                if source in self._commands['sources']:
+                    if new_name is not None:
+                        self._commands['sources'][new_name] = self._commands['sources'][source]
+
+                    del self._commands['sources'][source]
 
             #Sources list
             for key in self._commands['sources']:
@@ -133,8 +144,7 @@ class SmartIRMediaPlayer(MediaPlayerDevice, RestoreEntity):
             self.hass,
             self._supported_controller, 
             self._commands_encoding,
-            self._controller_send_service,
-            self._controller_command_topic)
+            self._controller_data)
 
     async def async_added_to_hass(self):
         """Run when entity about to be added."""
@@ -159,6 +169,11 @@ class SmartIRMediaPlayer(MediaPlayerDevice, RestoreEntity):
     def name(self):
         """Return the name of the media player."""
         return self._name
+
+    @property
+    def device_class(self):
+        """Return the device_class of the media player."""
+        return self._device_class
 
     @property
     def state(self):
