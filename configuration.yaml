@@ -88,6 +88,16 @@ weather:
 sensor:
 #Weather prediction
   - platform: moon
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: memory_free
+      - type: load_1m
+      - type: load_5m
+      - type: load_15m
+      - type: last_boot
+      - type: memory_use
 #PiHole stats
 pi_hole:
   host: !secret pi_a
