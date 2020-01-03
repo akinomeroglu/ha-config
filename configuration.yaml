@@ -138,6 +138,10 @@ influxdb:
   password: !secret influxdb
   max_retries: 3
   default_measurement: state
+alarm_control_panel:
+  platform: alarmdotcom
+  username: !secret alarm_username
+  password: !secret alarm_password
 
 #telegram_bot:
 #  - platform: polling
