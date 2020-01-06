@@ -1,31 +1,89 @@
+resources:
+  - type: module
+    url: /community_plugin/weather-card/weather-card.js
+  - type: module
+    url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
+  - type: module
+    url: /local/battery-entity.js
 title: OmerogluHQ
 views:
-  - badges:
-      - binary_sensor.remote_ui
-    cards:
-      - entity: camera.livingroomcam_motion_snapshot
-        type: picture-entity
-      - entity: weather.dark_sky
-        name: Weather
-        type: weather-forecast
-      - entities:
-          - entity: person.akin_omeroglu
-          - entity: zone.home
-        type: map
-    icon: 'mdi:home'
+  - icon: 'mdi:home'
     path: default_view
     title: Home
+    panel: false
+    badges: []
+    cards:
+      - aspect_ratio: 50%
+        camera_image: camera.dino
+        entity: camera.dino
+        name: Dino Camera
+        show_state: false
+        type: picture-entity
+      - cards:
+          - cards:
+              - animate: true
+                entities:
+                  - sensor.child_room_temperature
+                group: true
+                name: Dino
+                type: 'custom:mini-graph-card'
+              - animate: true
+                entities:
+                  - sensor.living_room_temperature
+                group: true
+                name: Living Room
+                type: 'custom:mini-graph-card'
+            type: horizontal-stack
+          - cards:
+              - animate: true
+                entities:
+                  - sensor.bedroom_temperature
+                group: true
+                name: Bedroom
+                type: 'custom:mini-graph-card'
+              - animate: true
+                entities:
+                  - sensor.outside_temperature
+                group: true
+                name: Balcony
+                type: 'custom:mini-graph-card'
+            type: horizontal-stack
+          - animate: true
+            entities:
+              - sensor.living_room_humidity
+              - sensor.child_room_humidity
+              - sensor.bedroom_humidity
+            group: true
+            name: Humidity
+            type: 'custom:mini-graph-card'
+        type: vertical-stack
+      - type: 'custom:weather-card'
+        entity: weather.dark_sky
+        name: Weather
+        current: true
+        details: false
+        forecast: true
+      - entity: alarm_control_panel.alarm_com
+        name: Home Alarm
+        states:
+          - arm_home
+          - arm_away
+        type: alarm-panel
   - badges: []
     cards:
       - entity: sensor.living_room_temperature
         graph: line
         hours_to_show: 24
         type: sensor
-      - entity: media_player.echo_livingroom
+      - entity: media_player.living_room
         type: media-control
-      - camera_view: live
+      - aspect_ratio: 50%
+        camera_image: camera.salon
+        camera_view: live
         entity: camera.salon
         name: Living Room Camera
+        show_name: true
+        show_state: false
         type: picture-entity
       - entities:
           - entity: sensor.livingroom_humidity
@@ -39,7 +97,8 @@ views:
           - entity: light.table_lamp
           - entity: light.lampshade
           - entity: light.coffee_table
-        show_header_toggle: false
+          - entity: switch.christmas_light
+        show_header_toggle: true
         title: Living Room Lights
         type: entities
     icon: 'mdi:ceiling-light'
@@ -47,11 +106,10 @@ views:
     title: Living Room
   - badges: []
     cards:
-      - entity: light.kitchen
-        name: Kitchen Light
-        type: light
       - entity: media_player.echo_kitchen
         type: media-control
+      - entity: light.kitchen_light
+        type: light
     icon: 'mdi:fridge'
     path: kitchen
     title: Kitchen
@@ -70,7 +128,7 @@ views:
       - entity: light.child_room
         name: Dino's Light
         type: light
-    icon: 'mdi:baby-buggy'
+    icon: 'mdi:human-child'
     path: dino
     title: Dino's Room
   - badges: []
@@ -87,6 +145,19 @@ views:
     panel: false
     path: library
     title: Library
+  - badges: []
+    cards:
+      - entity: media_player.echo_bedroom
+        type: media-control
+      - entity: light.bedroom_light
+        name: Bedroom Light
+        type: light
+      - entity: sensor.bedroom_temperature
+        graph: line
+        type: sensor
+    icon: 'mdi:bed-king'
+    path: bed-room
+    title: 'Bed Room '
   - badges: []
     cards:
       - entity: sensor.outside_temperature
@@ -125,8 +196,22 @@ views:
     path: outside
     title: Outside
   - badges: []
-    cards: []
+    cards:
+      - entities:
+          - entity: sensor.fast_com_download
+          - entity: sensor.pi_hole_ads_blocked_today
+          - entity: sensor.pi_hole_dns_queries_today
+          - entity: binary_sensor.remote_ui
+        show_header_toggle: false
+        title: Internet
+        type: entities
+      - entities:
+          - entity: sensor.closet_door_battery_level
+        show_header_toggle: false
+        title: Batteries
+        type: entities
     icon: 'mdi:wrench'
     path: tools
+    resources: null
     title: Tools
 
