@@ -1,4 +1,0 @@
-- platform: ffmpeg
-  name: Salon
-  input: -rtsp_transport tcp -i rtsp://very:secret@1.1.1.1:1111/unicast
-
