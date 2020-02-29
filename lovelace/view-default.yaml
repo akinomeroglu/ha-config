@@ -1,0 +1,83 @@
+title: Home
+    icon: 'mdi:home'
+    panel: false
+    path: default_view
+    badges: []
+    cards:
+      - type: picture-entity
+        aspect_ratio: 50%
+        camera_image: camera.dino
+        entity: camera.dino
+        name: Dino Camera
+        show_state: false
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:mini-graph-card'
+                animate: true
+                entities:
+                  - entity: sensor.child_room_temperature
+                    index: 0
+                group: false
+                name: Dino
+              - type: 'custom:mini-graph-card'
+                entities:
+                  - entity: sensor.living_room_temperature
+                    index: 0
+                group: false
+                name: Living Room
+                animate: true
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:mini-graph-card'
+                animate: true
+                entities:
+                  - entity: sensor.bedroom_temperature
+                    index: 0
+                group: false
+                name: Bedroom 
+              - type: 'custom:mini-graph-card'
+                animate: true
+                entities:
+                  - entity: sensor.outside_temperature
+                    index: 0
+                group: false
+                name: Balcony             
+          - type: 'custom:mini-graph-card'
+            animate: true
+            entities:
+              - entity: sensor.living_room_humidity
+                index: 0
+              - entity: sensor.child_room_humidity
+                index: 1
+              - entity: sensor.bedroom_humidity
+                index: 2
+            group: false
+            name: Humidity
+      - type: 'custom:weather-card'
+        current: true
+        details: false
+        entity: weather.dark_sky
+        forecast: true
+        name: Weather
+      - type: alarm-panel
+        entity: alarm_control_panel.alarm_com
+        name: Home Alarm
+        states:
+          - arm_home
+          - arm_away
+      - type: entity-filter
+        entities:
+          - media_player.apple_tv
+          - media_player.echo_bedroom
+          - entity: media_player.living_room
+            type: 'custom:mini-media-player'
+            artwork: cover
+            hide:
+              power_state: false
+              source: true
+              volume: false
+            icon: 'mdi:spotify'
+        state_filter:
+          - playing

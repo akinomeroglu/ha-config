@@ -1,7 +1,6 @@
-*
+.vscode
+.DS_Store
 !*.yaml
-!scenes
 !.gitignore
 secrets.yaml
 known_devices.yaml
-!.travis.yml
