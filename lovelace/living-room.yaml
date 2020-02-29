@@ -1,0 +1,41 @@
+title: Living Room    
+icon: 'mdi:ceiling-light'
+path: livingroom    
+badges: []
+cards:
+      - type: 'custom:mini-media-player'
+        artwork: cover
+        entity: media_player.living_room
+        hide:
+          power_state: false
+          source: true
+          volume: false
+        icon: 'mdi:spotify'
+      - type: picture-entity
+        aspect_ratio: 50%
+        camera_image: camera.salon
+        camera_view: live
+        entity: camera.salon
+        name: Living Room Camera
+        show_name: true
+        show_state: false 
+      - type: sensor
+        entity: sensor.living_room_temperature
+        graph: line
+        hours_to_show: 24 
+      - type: glance 
+        entities:
+          - entity: sensor.living_room_humidity
+          - entity: sensor.living_room_pressure
+          - entity: switch.livingroomcam_h264_rtsp_server
+          - entity: switch.salon_tv
+        show_name: false
+      - type: entities
+        title: Living Room Lights
+        show_header_toggle: true
+        entities:
+          - entity: light.ceiling_lamp
+          - entity: light.table_lamp
+          - entity: light.lampshade
+          - entity: light.coffee_table
+          - entity: switch.tv_light
