@@ -1,3 +1,4 @@
+background: var(--background-image)
 resources:
   - type: module
     url: /community_plugin/weather-card/weather-card.js
@@ -5,78 +6,103 @@ resources:
     url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
   - type: module
     url: /local/battery-entity.js
+  - type: module
+    url: /community_plugin/mini-media-player/mini-media-player-bundle.js
 title: OmerogluHQ
 views:
-  - title: Home
-    icon: 'mdi:home'
-    path: default_view
-    panel: false
-    badges: []
+  - badges: []
     cards:
-      - aspect_ratio: 50%
+      - type: picture-entity
+        aspect_ratio: 50%
         camera_image: camera.dino
         entity: camera.dino
         name: Dino Camera
         show_state: false
-        type: picture-entity
-      - cards:
-          - cards:
-              - animate: true
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:mini-graph-card'
+                animate: true
                 entities:
-                  - sensor.child_room_temperature
-                group: true
+                  - entity: sensor.child_room_temperature
+                    index: 0
+                group: false
                 name: Dino
-                type: 'custom:mini-graph-card'
-              - animate: true
+              - type: 'custom:mini-graph-card'
                 entities:
-                  - sensor.living_room_temperature
-                group: true
+                  - entity: sensor.living_room_temperature
+                    index: 0
+                group: false
                 name: Living Room
-                type: 'custom:mini-graph-card'
-            type: horizontal-stack
-          - cards:
-              - animate: true
+                animate: true
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:mini-graph-card'
+                animate: true
                 entities:
-                  - sensor.bedroom_temperature
-                group: true
-                name: Bedroom
-                type: 'custom:mini-graph-card'
-              - animate: true
+                  - entity: sensor.bedroom_temperature
+                    index: 0
+                group: false
+                name: Bedroom 
+              - type: 'custom:mini-graph-card'
+                animate: true
                 entities:
-                  - sensor.outside_temperature
-                group: true
-                name: Balcony
-                type: 'custom:mini-graph-card'
-            type: horizontal-stack
-          - animate: true
+                  - entity: sensor.outside_temperature
+                    index: 0
+                group: false
+                name: Balcony             
+          - type: 'custom:mini-graph-card'
+            animate: true
             entities:
-              - sensor.living_room_humidity
-              - sensor.child_room_humidity
-              - sensor.bedroom_humidity
-            group: true
+              - entity: sensor.living_room_humidity
+                index: 0
+              - entity: sensor.child_room_humidity
+                index: 1
+              - entity: sensor.bedroom_humidity
+                index: 2
+            group: false
             name: Humidity
-            type: 'custom:mini-graph-card'
-        type: vertical-stack
       - type: 'custom:weather-card'
-        entity: weather.dark_sky
-        name: Weather
         current: true
         details: false
+        entity: weather.dark_sky
         forecast: true
-      - entity: alarm_control_panel.alarm_com
+        name: Weather
+      - type: alarm-panel
+        entity: alarm_control_panel.alarm_com
         name: Home Alarm
         states:
           - arm_home
           - arm_away
-        type: alarm-panel
+      - type: entity-filter
+        entities:
+          - media_player.apple_tv
+          - media_player.echo_bedroom
+          - entity: media_player.living_room
+            type: 'custom:mini-media-player'
+            artwork: cover
+            hide:
+              power_state: false
+              source: true
+              volume: false
+            icon: 'mdi:spotify'
+        state_filter:
+          - playing
+    icon: 'mdi:home'
+    panel: false
+    path: default_view
+    title: Home
   - badges: []
     cards:
-      - entity: sensor.living_room_temperature
-        graph: line
-        hours_to_show: 24
-        type: sensor
-      - entity: media_player.living_room
-        type: media-control
+      - artwork: cover
+        entity: media_player.living_room
+        hide:
+          power_state: false
+          source: true
+          volume: false
+        icon: 'mdi:spotify'
+        type: 'custom:mini-media-player'
       - aspect_ratio: 50%
         camera_image: camera.salon
         camera_view: live
@@ -85,8 +111,12 @@ views:
         show_name: true
         show_state: false
         type: picture-entity
+      - entity: sensor.living_room_temperature
+        graph: line
+        hours_to_show: 24
+        type: sensor
       - entities:
-          - entity: sensor.livingroom_humidity
+          - entity: sensor.living_room_humidity
           - entity: sensor.living_room_pressure
           - entity: switch.livingroomcam_h264_rtsp_server
           - entity: switch.salon_tv
@@ -97,7 +127,7 @@ views:
           - entity: light.table_lamp
           - entity: light.lampshade
           - entity: light.coffee_table
-          - entity: switch.christmas_light
+          - entity: switch.tv_light
         show_header_toggle: true
         title: Living Room Lights
         type: entities
@@ -108,7 +138,7 @@ views:
     cards:
       - entity: media_player.echo_kitchen
         type: media-control
-      - entity: light.kitchen_light
+      - entity: light.kitchen
         type: light
     icon: 'mdi:fridge'
     path: kitchen
@@ -121,7 +151,7 @@ views:
         hours_to_show: 24
         name: Temperature
         type: sensor
-      - entity: sensor.yatak_odasi_2
+      - entity: sensor.child_room_humidity
         graph: line
         name: Humidity
         type: sensor
