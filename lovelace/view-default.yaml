@@ -79,5 +79,13 @@ cards:
               source: true
               volume: false
             icon: 'mdi:spotify'
+          - entity: : media_player.echo_bedroom
+            type: 'custom:mini-media-player'
+            artwork: cover
+            hide:
+              power_state: false
+              source: true
+              volume: false
+            icon: 'mdi:spotify'
         state_filter:
           - playing
