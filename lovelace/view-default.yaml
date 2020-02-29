@@ -1,9 +1,9 @@
 title: Home
-    icon: 'mdi:home'
-    panel: false
-    path: default_view
-    badges: []
-    cards:
+icon: 'mdi:home'
+panel: false
+path: default_view
+badges: []
+cards:
       - type: picture-entity
         aspect_ratio: 50%
         camera_image: camera.dino
