@@ -68,6 +68,8 @@ cards:
           - arm_home
           - arm_away
       - type: entity-filter
+        name: Media Played
+        show_empty: false
         entities:
           - media_player.apple_tv
           - media_player.echo_bedroom
