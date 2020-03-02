@@ -25,8 +25,8 @@ cloud:
 
 #Lovelace
 lovelace:
-# Disable yaml for testing
-# mode: yaml
+#Enable yaml for prod
+mode: yaml
 
 #Person
 person:
@@ -120,9 +120,6 @@ alexa_media:
       password: !secret amazon_pass
       url: amazon.com
 
-tradfri:
-  host: !secret tradfri_ip
-
 yeelight:
   devices: 
     192.168.1.46:
@@ -130,6 +127,8 @@ yeelight:
 
 homekit:
 mobile_app:
+
+#influxdb for long time data measurement
 influxdb:
   host: a0d7b954-influxdb
   port: 8086
@@ -138,6 +137,8 @@ influxdb:
   password: !secret influxdb
   max_retries: 3
   default_measurement: state
+
+#home_alarm
 alarm_control_panel:
   platform: alarmdotcom
   username: !secret alarm_username
