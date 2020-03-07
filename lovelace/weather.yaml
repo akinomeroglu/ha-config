@@ -1,5 +1,5 @@
-title: Lights & Switches   
-icon: 'mdi:ceiling-light'
+title: Weather   
+icon: 'mdi:weather-cloudy'
 path: lights  
 badges: []
 cards:
