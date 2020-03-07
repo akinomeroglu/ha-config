@@ -68,7 +68,7 @@ cards:
           - arm_home
           - arm_away
       - type: entity-filter
-        name: Media Played
+        title: Media Played
         show_empty: false
         entities:
           - entity: media_player.apple_tv
@@ -79,6 +79,7 @@ cards:
               source: true
               volume: false
             icon: 'mdi:television-classic'
+            group: true
           - entity: media_player.living_room
             type: 'custom:mini-media-player'
             artwork: cover
@@ -87,6 +88,7 @@ cards:
               source: true
               volume: false
             icon: 'mdi:spotify'
+            group: true
           - entity: media_player.echo_bedroom
             type: 'custom:mini-media-player'
             artwork: cover
@@ -95,6 +97,7 @@ cards:
               source: true
               volume: false
             icon: 'mdi:spotify'
+            group: true
           - entity: media_player.echo_kitchen
             type: 'custom:mini-media-player'
             artwork: cover
@@ -103,6 +106,7 @@ cards:
               source: true
               volume: false
             icon: 'mdi:spotify'
+            group: true
           - entity: media_player.echo_library
             type: 'custom:mini-media-player'
             artwork: cover
@@ -111,6 +115,7 @@ cards:
               source: true
               volume: false
             icon: 'mdi:spotify'
+            group: true
           - entity: media_player.echo_everywhere
             type: 'custom:mini-media-player'
             artwork: cover
@@ -119,5 +124,28 @@ cards:
               source: true
               volume: false
             icon: 'mdi:spotify' 
+            group: true
         state_filter:
           - playing
+      - type: entity-filter
+        title: Lights
+        show_empty: false
+        entities:
+        - light.balcony
+        - light.bathroom
+        - light.bedroom_hall
+        - light.bedroom_light
+        - light.ceiling_lamp
+        - light.child_room
+        - light.coffee_table
+        - light.corridor
+        - light.doorway
+        - light.hall
+        - light.kitchen
+        - light.lampshade
+        - light.library
+        - light.lampshade
+        - light.table_lamp
+        - light.ceiling_lamp
+        state_filter:
+          - on   
