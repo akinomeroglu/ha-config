@@ -131,21 +131,20 @@ cards:
         title: Lights
         show_empty: false
         entities:
-        - light.balcony
-        - light.bathroom
-        - light.bedroom_hall
-        - light.bedroom_light
-        - light.ceiling_lamp
-        - light.child_room
-        - light.coffee_table
-        - light.corridor
-        - light.doorway
-        - light.hall
-        - light.kitchen
-        - light.lampshade
-        - light.library
-        - light.lampshade
-        - light.table_lamp
-        - light.ceiling_lamp
+          - light.balcony
+          - light.bathroom
+          - light.bedroom_hall
+          - light.bedroom_light
+          - light.ceiling_lamp
+          - light.child_room
+          - light.coffee_table
+          - light.corridor
+          - light.doorway
+          - light.hall
+          - light.kitchen
+          - light.lampshade
+          - light.library
+          - light.table_lamp
+          - light.ceiling_lamp
         state_filter:
           - on   
