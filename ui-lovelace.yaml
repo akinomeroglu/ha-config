@@ -11,7 +11,7 @@ resources:
 title: OmerogluHQ
 views:
   - !include lovelace/view-default.yaml
-  - !include lovelace/living-room.yaml
+  - !include lovelace/lights.yaml
   - badges: []
     cards:
       - entity: media_player.echo_kitchen

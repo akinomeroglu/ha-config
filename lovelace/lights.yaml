@@ -1,16 +1,8 @@
-title: Living Room    
+title: Lights & Switches   
 icon: 'mdi:ceiling-light'
-path: livingroom    
+path: lights  
 badges: []
 cards:
-      - type: 'custom:mini-media-player'
-        artwork: cover
-        entity: media_player.living_room
-        hide:
-          power_state: false
-          source: true
-          volume: false
-        icon: 'mdi:spotify'
       - type: picture-entity
         aspect_ratio: 50%
         camera_image: camera.salon
