@@ -1,0 +1,30 @@
+title: Lights & Switches   
+icon: 'mdi:ceiling-light'
+path: lights  
+badges: []
+cards:
+  - type: glance
+    title: Living Room
+    entities:
+      - entity: sensor.living_room_temperature
+      - entity: sensor.living_room_humidity
+      - entity: sensor.living_room_pressure
+      - entity: sensor.livingroomcam_light_sensor
+  - type: glance
+    title: Outside
+    entities:
+      - entity: sensor.outside_temperature
+      - entity: sensor.outside_humidity
+      - entity: sensor.outside_pressure
+  - type: glance
+    title: Bed Room
+    entities:
+      - entity: sensor.bedroom_temperature
+      - entity: sensor.bedroom_humidity
+      - entity: sensor.bedroom_pressure
+  - type: glance
+    title: Child Room
+    entities:
+      - entity: sensor.child_room_temperature
+      - entity: sensor.child_room_humidity
+      - entity: sensor.child_room_pressure
