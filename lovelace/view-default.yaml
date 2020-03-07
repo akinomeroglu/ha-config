@@ -68,7 +68,9 @@ cards:
           - arm_home
           - arm_away
       - type: entity-filter
-        title: Media Played
+        card:
+          title: Media Played
+          show_header_toggle: false
         show_empty: false
         entities:
           - entity: media_player.apple_tv
@@ -128,7 +130,9 @@ cards:
         state_filter:
           - playing
       - type: entity-filter
-        title: Lights
+        card: 
+            title: Lights
+            show_header_toggle: false
         show_empty: false
         entities:
           - light.balcony
@@ -145,6 +149,5 @@ cards:
           - light.lampshade
           - light.library
           - light.table_lamp
-          - light.ceiling_lamp
         state_filter:
-          - on   
+          - 'on'
