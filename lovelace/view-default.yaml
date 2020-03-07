@@ -71,8 +71,14 @@ cards:
         name: Media Played
         show_empty: false
         entities:
-          - media_player.apple_tv
-          - media_player.echo_bedroom
+          - entity: media_player.apple_tv
+            type: 'custom:mini-media-player'
+            artwork: cover
+            hide:
+              power_state: false
+              source: true
+              volume: false
+            icon: 'mdi:television-classic'
           - entity: media_player.living_room
             type: 'custom:mini-media-player'
             artwork: cover
@@ -89,5 +95,29 @@ cards:
               source: true
               volume: false
             icon: 'mdi:spotify'
+          - entity: media_player.echo_kitchen
+            type: 'custom:mini-media-player'
+            artwork: cover
+            hide:
+              power_state: false
+              source: true
+              volume: false
+            icon: 'mdi:spotify'
+          - entity: media_player.echo_library
+            type: 'custom:mini-media-player'
+            artwork: cover
+            hide:
+              power_state: false
+              source: true
+              volume: false
+            icon: 'mdi:spotify'
+          - entity: media_player.echo_everywhere
+            type: 'custom:mini-media-player'
+            artwork: cover
+            hide:
+              power_state: false
+              source: true
+              volume: false
+            icon: 'mdi:spotify' 
         state_filter:
           - playing
