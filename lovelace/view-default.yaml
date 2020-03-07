@@ -3,8 +3,7 @@ icon: 'mdi:home'
 panel: false
 path: default_view
 badges: []
-cards:
-      
+cards: 
       - type: vertical-stack
         cards:
           - type: 'custom:weather-card'
@@ -62,103 +61,105 @@ cards:
         entity: camera.dino
         name: Dino Camera
         show_state: false
-      - type: alarm-panel
-        entity: alarm_control_panel.alarm_com
-        name: Home Alarm
-        states:
-          - arm_home
-          - arm_away
-      - type: entity-filter
-        card:
-          title: Media Played
-          show_header_toggle: false
-        show_empty: false
-        entities:
-          - entity: media_player.apple_tv
-            type: 'custom:mini-media-player'
-            artwork: cover
-            hide:
-              power_state: false
-              source: true
-              volume: false
-            icon: 'mdi:television-classic'
-            group: true
-          - entity: media_player.living_room
-            type: 'custom:mini-media-player'
-            artwork: cover
-            hide:
-              power_state: false
-              source: true
-              volume: false
-            icon: 'mdi:spotify'
-            group: true
-          - entity: media_player.echo_bedroom
-            type: 'custom:mini-media-player'
-            artwork: cover
-            hide:
-              power_state: false
-              source: true
-              volume: false
-            icon: 'mdi:spotify'
-            group: true
-          - entity: media_player.echo_kitchen
-            type: 'custom:mini-media-player'
-            artwork: cover
-            hide:
-              power_state: false
-              source: true
-              volume: false
-            icon: 'mdi:spotify'
-            group: true
-          - entity: media_player.echo_library
-            type: 'custom:mini-media-player'
-            artwork: cover
-            hide:
-              power_state: false
-              source: true
-              volume: false
-            icon: 'mdi:spotify'
-            group: true
-          - entity: media_player.echo_everywhere
-            type: 'custom:mini-media-player'
-            artwork: cover
-            hide:
-              power_state: false
-              source: true
-              volume: false
-            icon: 'mdi:spotify' 
-            group: true
-        state_filter:
-          - playing
-      - type: entity-filter
-        card: 
-            title: Lights
+      - type: vertical-stack
+        cards:
+        - type: entity-filter
+          card:
+            title: Media Played
             show_header_toggle: false
-        show_empty: false
-        entities:
-          - light.balcony
-          - light.bathroom
-          - light.bedroom_hall
-          - light.bedroom_light
-          - light.ceiling_lamp
-          - light.child_room
-          - light.coffee_table
-          - light.corridor
-          - light.doorway
-          - light.hall
-          - light.kitchen
-          - light.lampshade
-          - light.library
-          - light.table_lamp
-        state_filter:
-          - 'on'
-      - type: entity-filter
-        card:
-            title: Doors
-            show_header_toggle: false
-        show_empty: false
-        entities:
-          - binary_sensor.main_door
-          - binary_sensor.closet_door
-        state_filter:
-          - 'open'
+          show_empty: false
+          entities:
+            - entity: media_player.apple_tv
+              type: 'custom:mini-media-player'
+              artwork: cover
+              hide:
+                power_state: false
+                source: true
+                volume: false
+              icon: 'mdi:television-classic'
+              group: true
+            - entity: media_player.living_room
+              type: 'custom:mini-media-player'
+              artwork: cover
+              hide:
+                power_state: false
+                source: true
+                volume: false
+              icon: 'mdi:spotify'
+              group: true
+            - entity: media_player.echo_bedroom
+              type: 'custom:mini-media-player'
+              artwork: cover
+              hide:
+                power_state: false
+                source: true
+                volume: false
+              icon: 'mdi:spotify'
+              group: true
+            - entity: media_player.echo_kitchen
+              type: 'custom:mini-media-player'
+              artwork: cover
+              hide:
+                power_state: false
+                source: true
+                volume: false
+              icon: 'mdi:spotify'
+              group: true
+            - entity: media_player.echo_library
+              type: 'custom:mini-media-player'
+              artwork: cover
+              hide:
+                power_state: false
+                source: true
+                volume: false
+              icon: 'mdi:spotify'
+              group: true
+            - entity: media_player.echo_everywhere
+              type: 'custom:mini-media-player'
+              artwork: cover
+              hide:
+                power_state: false
+                source: true
+                volume: false
+              icon: 'mdi:spotify' 
+              group: true
+          state_filter:
+            - playing
+        - type: entity-filter
+          card: 
+              title: Lights
+              show_header_toggle: false
+          show_empty: false
+          entities:
+            - light.balcony
+            - light.bathroom
+            - light.bedroom_hall
+            - light.bedroom_light
+            - light.ceiling_lamp
+            - light.child_room
+            - light.coffee_table
+            - light.corridor
+            - light.doorway
+            - light.hall
+            - light.kitchen
+            - light.lampshade
+            - light.library
+            - light.table_lamp
+          state_filter:
+            - 'on'
+        - type: entity-filter
+          card:
+              title: Doors
+              show_header_toggle: false
+          show_empty: false
+          entities:
+            - binary_sensor.main_door
+            - binary_sensor.closet_door
+          state_filter:
+            - 'open'
+        - type: alarm-panel
+          entity: alarm_control_panel.alarm_com
+          name: Home Alarm
+          states:
+            - arm_home
+            - arm_away
