@@ -4,12 +4,12 @@ panel: false
 path: default_view
 badges: []
 cards:
-      - type: picture-entity
-        aspect_ratio: 50%
-        camera_image: camera.dino
-        entity: camera.dino
-        name: Dino Camera
-        show_state: false
+      - type: 'custom:weather-card'
+        current: true
+        details: false
+        entity: weather.dark_sky
+        forecast: true
+        name: Weather
       - type: vertical-stack
         cards:
           - type: horizontal-stack
@@ -55,12 +55,12 @@ cards:
                 index: 2
             group: false
             name: Humidity
-      - type: 'custom:weather-card'
-        current: true
-        details: false
-        entity: weather.dark_sky
-        forecast: true
-        name: Weather
+      - type: picture-entity
+        aspect_ratio: 50%
+        camera_image: camera.dino
+        entity: camera.dino
+        name: Dino Camera
+        show_state: false
       - type: alarm-panel
         entity: alarm_control_panel.alarm_com
         name: Home Alarm
@@ -151,3 +151,13 @@ cards:
           - light.table_lamp
         state_filter:
           - 'on'
+      - type: entity-filter
+        card:
+            title: Doors
+            show_header_toggle: false
+        show_empty: false
+        entities:
+          - binary_sensor.main_door
+          - binary_sensor.closet_door
+        state_filter:
+          - 'open'
