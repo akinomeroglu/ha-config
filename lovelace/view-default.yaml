@@ -61,6 +61,12 @@ cards:
         entity: camera.dino
         name: Dino Camera
         show_state: false
+      - type: picture-entity
+        aspect_ratio: 50%
+        camera_image: camera.salon
+        entity: camera.salon
+        name: Living Room Camera
+        show_state: true
       - type: vertical-stack
         cards:
         - type: entity-filter
