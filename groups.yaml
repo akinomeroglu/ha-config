@@ -1,6 +1,5 @@
 living_room_lights:
     name: Living Room Lights
-    view: no
     entities:
       - light.ceiling_lamp
       - light.table_lamp
@@ -8,7 +7,6 @@ living_room_lights:
       - light.lampshade
 hall_lights:
     name: Corridor Lights
-    view: no
     entities:
       - light.corridor
       - light.doorway
