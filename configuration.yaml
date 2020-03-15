@@ -26,7 +26,7 @@ cloud:
 #Lovelace
 lovelace:
 #Enable yaml for prod
-mode: yaml
+  mode: yaml
 
 #Person
 person:

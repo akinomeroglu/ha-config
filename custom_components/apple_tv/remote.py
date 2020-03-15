@@ -1,11 +1,14 @@
 """Remote control support for Apple TV."""
 
-from homeassistant.core import callback
-from homeassistant.const import CONF_NAME
+import logging
+
 from homeassistant.components import remote
+from homeassistant.const import CONF_NAME
+from homeassistant.core import callback
 
-from .const import DOMAIN, CONF_IDENTIFIER
+from .const import CONF_IDENTIFIER, DOMAIN
 
+_LOGGER = logging.getLogger(__name__)
 
 PARALLEL_UPDATES = 0
 
@@ -17,6 +20,14 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 
     identifier = discovery_info[CONF_IDENTIFIER]
     name = discovery_info[CONF_NAME]
+    manager = hass.data[DOMAIN][identifier]
+    async_add_entities([AppleTVRemote(name, identifier, manager)])
+
+
+async def async_setup_entry(hass, config_entry, async_add_entities):
+    """Load Apple TV remote based on a config entry."""
+    identifier = config_entry.data[CONF_IDENTIFIER]
+    name = config_entry.data[CONF_NAME]
     manager = hass.data[DOMAIN][identifier]
     async_add_entities([AppleTVRemote(name, identifier, manager)])
 
@@ -37,10 +48,12 @@ class AppleTVRemote(remote.RemoteDevice):
 
     @callback
     def device_connected(self):
+        """Handle when connection is made to device."""
         self.atv = self._manager.atv
 
     @callback
     def device_disconnected(self):
+        """Handle when connection was lost to device."""
         self.atv = None
 
     @property
@@ -76,30 +89,21 @@ class AppleTVRemote(remote.RemoteDevice):
         return False
 
     async def async_turn_on(self, **kwargs):
-        """Turn the device on.
-
-        This method is a coroutine.
-        """
+        """Turn the device on."""
         await self._manager.connect()
 
     async def async_turn_off(self, **kwargs):
-        """Turn the device off.
-
-        This method is a coroutine.
-        """
+        """Turn the device off."""
         await self._manager.disconnect()
 
-    def async_send_command(self, command, **kwargs):
-        """Send a command to one device.
+    async def async_send_command(self, command, **kwargs):
+        """Send a command to one device."""
+        if not self.is_on:
+            _LOGGER.error("Unable to send commands, not connected to %s", self._name)
+            return
 
-        This method must be run in the event loop and returns a coroutine.
-        """
-        # Send commands in specified order but schedule only one coroutine
-        async def _send_commands():
-            for single_command in command:
-                if not hasattr(self.atv.remote_control, single_command):
-                    continue
+        for single_command in command:
+            if not hasattr(self.atv.remote_control, single_command):
+                continue
 
-                await getattr(self.atv.remote_control, single_command)()
-
-        return _send_commands()
+            await getattr(self.atv.remote_control, single_command)()
