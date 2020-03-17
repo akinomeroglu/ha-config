@@ -27,6 +27,15 @@ cloud:
 lovelace:
 #Enable yaml for prod
   mode: yaml
+  resources:
+    - type: module
+      url: /community_plugin/weather-card/weather-card.js
+    - type: module
+      url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
+    - type: module
+      url: /local/battery-entity.js
+    - type: module
+      url: /community_plugin/mini-media-player/mini-media-player-bundle.js
 
 #Person
 person:
@@ -127,16 +136,6 @@ yeelight:
 
 homekit:
 mobile_app:
-
-#influxdb for long time data measurement
-influxdb:
-  host: a0d7b954-influxdb
-  port: 8086
-  database: homeassistant
-  username: homeassistant
-  password: !secret influxdb
-  max_retries: 3
-  default_measurement: state
 
 #home_alarm
 alarm_control_panel:

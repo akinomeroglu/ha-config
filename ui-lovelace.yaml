@@ -1,13 +1,4 @@
 background: var(--background-image)
-resources:
-  - type: module
-    url: /community_plugin/weather-card/weather-card.js
-  - type: module
-    url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
-  - type: module
-    url: /local/battery-entity.js
-  - type: module
-    url: /community_plugin/mini-media-player/mini-media-player-bundle.js
 title: OmerogluHQ
 views:
   - !include lovelace/view-default.yaml
