@@ -139,7 +139,7 @@ mobile_app:
 
 #home_alarm
 alarm_control_panel:
-  platform: alarmdotcom
+  platform: alarmdotcomajax
   username: !secret alarm_username
   password: !secret alarm_password
 
