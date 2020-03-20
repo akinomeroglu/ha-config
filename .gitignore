@@ -4,3 +4,17 @@
 !.gitignore
 secrets.yaml
 known_devices.yaml
+custom_components/hacs/globals.py
+custom_components/hacs/iconset.js
+custom_components/hacs/hacsbase/task_factory.py
+custom_components/hacs/helpers/download.py
+custom_components/hacs/helpers/filters.py
+custom_components/hacs/helpers/get_defaults.py
+custom_components/hacs/helpers/information.py
+custom_components/hacs/helpers/install.py
+custom_components/hacs/helpers/network.py
+custom_components/hacs/helpers/register_repository.py
+custom_components/hacs/helpers/validate_repository.py
+custom_components/hacs/repositories/netdaemon.py
+custom_components/hacs/repositories/removed.py
+custom_components/hacs/repositories/repositorydata.py
