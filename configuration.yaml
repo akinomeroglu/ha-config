@@ -85,17 +85,8 @@ logbook:
 #Enables a map showing the location of tracked devices
 map:
 
-device_tracker:
-  - platform: unifi_direct
-    host: !secret unifi_host
-    username: !secret unifi_user
-    password: !secret unifi_password
-
 # Track the sun
-sun:
-weather:
-  - platform: darksky
-    api_key: !secret darksky_api    
+sun: 
 sensor:
 #Weather prediction
   - platform: moon
@@ -109,9 +100,6 @@ sensor:
       - type: load_15m
       - type: last_boot
       - type: memory_use
-#PiHole stats
-pi_hole:
-  host: !secret pi_a
 
 #Internet speed test
 fastdotcom:
