@@ -163,15 +163,18 @@ class AppleTVManager:
     def connection_lost(self, exception):
         """Device was unexpectedly disconnected."""
         _LOGGER.warning('Connection lost to Apple TV "%s"', self.atv.name)
-
-        self.atv = None
+        if self.atv:
+            self.atv.close()
+            self.atv = None
         self._connection_was_lost = True
         self._update_state(disconnected=True)
         self._start_connect_loop()
 
     def connection_closed(self):
         """Device connection was (intentionally) closed."""
-        self.atv = None
+        if self.atv:
+            self.atv.close()
+            self.atv = None
         self._update_state(disconnected=True)
         self._start_connect_loop()
 
@@ -243,7 +246,7 @@ class AppleTVManager:
         _LOGGER.debug("Authentication error, reconfigure integration")
 
         name = self.config_entry.data.get(CONF_NAME)
-        identifier = self.config_entry.data.get(CONF_IDENTIFIER)
+        identifier = self.config_entry.unique_id
 
         self.hass.components.persistent_notification.create(
             "An irrecoverable connection problem occurred when connecting to "
@@ -265,7 +268,7 @@ class AppleTVManager:
         )
 
     async def _scan(self):
-        identifier = self.config_entry.data[CONF_IDENTIFIER]
+        identifier = self.config_entry.unique_id
         address = self.config_entry.data[CONF_ADDRESS]
         protocol = Protocol(self.config_entry.data[CONF_PROTOCOL])
 

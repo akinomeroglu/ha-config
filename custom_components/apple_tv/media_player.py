@@ -30,7 +30,7 @@ from homeassistant.const import (
 from homeassistant.core import callback
 import homeassistant.util.dt as dt_util
 
-from .const import CONF_IDENTIFIER, DOMAIN
+from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -51,7 +51,7 @@ SUPPORT_APPLE_TV = (
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Load Apple TV media player based on a config entry."""
-    identifier = config_entry.data[CONF_IDENTIFIER]
+    identifier = config_entry.unique_id
     name = config_entry.data[CONF_NAME]
     manager = hass.data[DOMAIN][config_entry.unique_id]
     async_add_entities([AppleTvDevice(name, identifier, manager)])
@@ -73,6 +73,10 @@ class AppleTvDevice(MediaPlayerDevice):
         self._manager.listeners.append(self)
         await self._manager.init()
 
+    async def async_will_remove_from_hass(self):
+        """Handle when an entity is about to be removed from Home Assistant."""
+        self._manager.listeners.remove(self)
+
     @callback
     def device_connected(self):
         """Handle when connection is made to device."""
@@ -82,6 +86,7 @@ class AppleTvDevice(MediaPlayerDevice):
     @callback
     def device_disconnected(self):
         """Handle when connection was lost to device."""
+        self.atv.push_updater.listener = None
         self.atv = None
 
     @property
