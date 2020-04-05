@@ -61,13 +61,13 @@ http:
 updater:
 
 #Using mosquitto instead of embedded broker
-mqtt:
-  broker: !secret mqttbroker
-  username: !secret mqttusername
-  password: !secret mqttpassword
-  client_id: !secret mqttclientid 
-  discovery: true
-  discovery_prefix: homeassistant
+#mqtt:
+#  broker: !secret mqttbroker
+#  username: !secret mqttusername
+#  password: !secret mqttpassword
+#  client_id: !secret mqttclientid 
+#  discovery: true
+#  discovery_prefix: homeassistant
 
   
 #Discover some devices automatically
