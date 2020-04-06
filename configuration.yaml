@@ -100,6 +100,12 @@ sensor:
       - type: load_15m
       - type: last_boot
       - type: memory_use
+  - platform: sonarr
+    api_key: !secret sonarr_key
+    monitored_conditions:
+      - upcoming
+      - wanted
+      - queue
 
 #Internet speed test
 fastdotcom:
