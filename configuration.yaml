@@ -36,6 +36,8 @@ lovelace:
       url: /local/battery-entity.js
     - type: module
       url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+    - type: module
+      url: /hacsfiles/button-card/button-card.js
 
 #Person
 person:
