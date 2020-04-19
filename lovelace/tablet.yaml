@@ -1,0 +1,147 @@
+views:
+  - badges: []
+    cards:
+      - cards:
+          - cards:
+              - entity: light.ceiling_lamp
+                hold_action:
+                  action: more-info
+                icon: 'mdi:ceiling-light'
+                name: Ceiling Light
+                show_state: false
+                type: 'custom:button-card'
+              - entity: light.lampshade
+                hold_action:
+                  action: more-info
+                icon: 'mdi:floor-lamp'
+                name: Lampshade
+                show_state: false
+                type: 'custom:button-card'
+              - entity: light.coffee_table
+                hold_action:
+                  action: more-info
+                icon: 'mdi:lamp'
+                name: Coffee Table
+                show_state: false
+                type: 'custom:button-card'
+              - entity: light.table_lamp
+                hold_action:
+                  action: more-info
+                icon: 'mdi:ceiling-light'
+                name: Table Lamp
+                show_state: false
+                type: 'custom:button-card'
+            title: Living Room Lights
+            type: horizontal-stack
+          - cards:
+              - entity: light.kitchen
+                hold_action:
+                  action: more-info
+                icon: 'mdi:ceiling-light'
+                name: Kitchen
+                show_state: false
+                type: 'custom:button-card'
+              - entity: light.library
+                hold_action:
+                  action: more-info
+                icon: 'mdi:desk-lamp'
+                name: Library
+                show_state: false
+                type: 'custom:button-card'
+              - entity: light.child_room
+                hold_action:
+                  action: more-info
+                icon: 'mdi:vanity-light'
+                name: Child Room
+                show_state: false
+                type: 'custom:button-card'
+              - entity: light.bedroom
+                hold_action:
+                  action: more-info
+                icon: 'mdi:led-strip-variant'
+                name: Bedroom
+                show_state: false
+                type: 'custom:button-card'
+            title: Room Lights
+            type: horizontal-stack
+          - cards:
+              - cards:
+                  - entity: light.doorway
+                    hold_action:
+                      action: more-info
+                    icon: 'mdi:door-closed'
+                    name: Doorway
+                    show_state: false
+                    type: 'custom:button-card'
+                  - entity: light.corridor
+                    hold_action:
+                      action: more-info
+                    icon: 'mdi:wall-sconce-flat'
+                    name: Corridor
+                    show_state: false
+                    type: 'custom:button-card'
+                  - entity: light.bedroom_hall
+                    hold_action:
+                      action: more-info
+                    icon: 'mdi:wall-sconce-flat'
+                    name: Hall
+                    show_state: false
+                    type: 'custom:button-card'
+                  - entity: light.balcony
+                    hold_action:
+                      action: more-info
+                    icon: 'mdi:outdoor-lamp'
+                    name: Balcony
+                    show_state: false
+                    type: 'custom:button-card'
+                title: Hall Lights
+                type: horizontal-stack
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - align_header: left
+            align_icon: left
+            animate: true
+            entities:
+              - entity: sensor.bedroom_temperature
+                show_indicator: true
+              - entity: sensor.bedroom_humidity
+                show_graph: false
+                show_state: true
+              - entity: sensor.bedroom_pressure
+                show_graph: false
+                show_state: true
+            group: false
+            icon: 'mdi:bed-king-outline'
+            name: Bedroom
+            show:
+              extrema: true
+            type: 'custom:mini-graph-card'
+          - align_header: left
+            align_icon: left
+            animate: true
+            entities:
+              - entity: sensor.living_room_temperature
+              - entity: sensor.living_room_humidity
+                show_graph: false
+                show_state: true
+              - entity: sensor.living_room_pressure
+                show_graph: false
+                show_state: true
+            icon: 'mdi:sofa'
+            name: Living Room
+            show:
+              extrema: true
+            type: 'custom:mini-graph-card'
+        type: horizontal-stack
+      - type: picture-glance
+        image: 'https://demo.home-assistant.io/stub_config/kitchen.png'
+        entities:
+          - entity: sensor.child_room_humidity
+        aspect_ratio: 0%
+        camera_image: camera.dino
+        entity: sensor.child_room_temperature
+        title: Dino
+    icon: 'mdi:tablet'
+    path: test
+    title: Test
