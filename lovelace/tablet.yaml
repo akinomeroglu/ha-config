@@ -1,5 +1,8 @@
 views:
-  - badges: []
+  - title: Test
+    icon: 'mdi:tablet'
+    path: test
+    badges: []
     cards:
       - cards:
           - cards:
@@ -135,13 +138,13 @@ views:
             type: 'custom:mini-graph-card'
         type: horizontal-stack
       - type: picture-glance
-        image: 'https://demo.home-assistant.io/stub_config/kitchen.png'
         entities:
+          - entity: sensor.child_room_temperature
+            show_state: true
           - entity: sensor.child_room_humidity
+            show_state: true
         aspect_ratio: 0%
         camera_image: camera.dino
-        entity: sensor.child_room_temperature
         title: Dino
-    icon: 'mdi:tablet'
-    path: test
-    title: Test
+
+
