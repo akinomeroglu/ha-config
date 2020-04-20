@@ -1,9 +1,8 @@
 views:
-  - title: Test
-    icon: 'mdi:tablet'
-    path: test
-    badges: []
+  - badges: []
     cards:
+      - entity: weather.omerogluhq
+        type: weather-forecast
       - cards:
           - cards:
               - entity: light.ceiling_lamp
@@ -34,7 +33,6 @@ views:
                 name: Table Lamp
                 show_state: false
                 type: 'custom:button-card'
-            title: Living Room Lights
             type: horizontal-stack
           - cards:
               - entity: light.kitchen
@@ -65,7 +63,6 @@ views:
                 name: Bedroom
                 show_state: false
                 type: 'custom:button-card'
-            title: Room Lights
             type: horizontal-stack
           - cards:
               - cards:
@@ -97,54 +94,91 @@ views:
                     name: Balcony
                     show_state: false
                     type: 'custom:button-card'
-                title: Hall Lights
                 type: horizontal-stack
             type: horizontal-stack
+          - entity: alarm_control_panel.alarm_com
+            name: Home Alarm
+            states:
+              - arm_home
+              - arm_away
+            type: alarm-panel
         type: vertical-stack
-      - cards:
-          - align_header: left
-            align_icon: left
-            animate: true
-            entities:
-              - entity: sensor.bedroom_temperature
-                show_indicator: true
-              - entity: sensor.bedroom_humidity
-                show_graph: false
-                show_state: true
-              - entity: sensor.bedroom_pressure
-                show_graph: false
-                show_state: true
-            group: false
-            icon: 'mdi:bed-king-outline'
-            name: Bedroom
-            show:
-              extrema: true
-            type: 'custom:mini-graph-card'
-          - align_header: left
-            align_icon: left
-            animate: true
-            entities:
-              - entity: sensor.living_room_temperature
-              - entity: sensor.living_room_humidity
-                show_graph: false
-                show_state: true
-              - entity: sensor.living_room_pressure
-                show_graph: false
-                show_state: true
-            icon: 'mdi:sofa'
-            name: Living Room
-            show:
-              extrema: true
-            type: 'custom:mini-graph-card'
-        type: horizontal-stack
-      - type: picture-glance
-        entities:
-          - entity: sensor.child_room_temperature
-            show_state: true
-          - entity: sensor.child_room_humidity
-            show_state: true
-        aspect_ratio: 0%
-        camera_image: camera.dino
-        title: Dino
-
+      - type: vertical-stack
+        cards:
+          - type: picture-glance
+            entities: []
+            aspect_ratio: 0%
+            camera_image: camera.dino
+            title: Dino
+          - type: horizontal-stack
+            cards:
+              - align_header: left
+                align_icon: left
+                animate: true
+                entities:
+                  - entity: sensor.living_room_temperature
+                  - entity: sensor.living_room_humidity
+                    show_graph: false
+                    show_state: true
+                  - entity: sensor.living_room_pressure
+                    show_graph: false
+                    show_state: true
+                icon: 'mdi:sofa'
+                name: Living Room
+                show:
+                  extrema: true
+                type: 'custom:mini-graph-card'
+              - align_header: left
+                align_icon: left
+                animate: true
+                entities:
+                  - entity: sensor.bedroom_temperature
+                  - entity: sensor.bedroom_humidity
+                    show_graph: false
+                    show_state: true
+                  - entity: sensor.bedroom_pressure
+                    show_graph: false
+                    show_state: true
+                icon: 'mdi:bed-king-outline'
+                name: Bedroom
+                show:
+                  extrema: true
+                type: 'custom:mini-graph-card'
+          - type: horizontal-stack
+            cards:
+              - align_header: left
+                align_icon: left
+                animate: true
+                entities:
+                  - entity: sensor.child_room_temperature
+                  - entity: sensor.child_room_humidity
+                    show_graph: false
+                    show_state: true
+                  - entity: sensor.child_room_pressure
+                    show_graph: false
+                    show_state: true
+                icon: 'mdi:car-child-seat'
+                name: Child Room
+                show:
+                  extrema: true
+                type: 'custom:mini-graph-card'
+              - align_header: left
+                align_icon: left
+                animate: true
+                entities:
+                  - entity: sensor.outside_temperature
+                  - entity: sensor.outside_humidity
+                    show_graph: false
+                    show_state: true
+                  - entity: sensor.outside_pressure
+                    show_graph: false
+                    show_state: true
+                icon: 'mdi:tree-outline'
+                name: Outside
+                show:
+                  extrema: true
+                type: 'custom:mini-graph-card'
+    icon: 'mdi:tablet'
+    path: test
+    title: Test
 
