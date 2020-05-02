@@ -61,12 +61,6 @@ cards:
         entity: camera.dino
         name: Dino Camera
         show_state: false
-      - type: picture-entity
-        aspect_ratio: 50%
-        camera_image: camera.salon
-        entity: camera.salon
-        name: Living Room Camera
-        show_state: true
       - type: vertical-stack
         cards:
         - type: entity-filter
@@ -75,60 +69,18 @@ cards:
             show_header_toggle: false
           show_empty: false
           entities:
-            - entity: media_player.apple_tv
-              type: 'custom:mini-media-player'
-              artwork: cover
-              hide:
-                power_state: false
-                source: true
-                volume: false
-              icon: 'mdi:television-classic'
-              group: true
-            - entity: media_player.living_room
-              type: 'custom:mini-media-player'
-              artwork: cover
-              hide:
-                power_state: false
-                source: true
-                volume: false
-              icon: 'mdi:spotify'
-              group: true
-            - entity: media_player.echo_bedroom
-              type: 'custom:mini-media-player'
-              artwork: cover
-              hide:
-                power_state: false
-                source: true
-                volume: false
-              icon: 'mdi:spotify'
-              group: true
-            - entity: media_player.echo_kitchen
-              type: 'custom:mini-media-player'
-              artwork: cover
-              hide:
-                power_state: false
-                source: true
-                volume: false
-              icon: 'mdi:spotify'
-              group: true
-            - entity: media_player.echo_library
-              type: 'custom:mini-media-player'
-              artwork: cover
-              hide:
-                power_state: false
-                source: true
-                volume: false
-              icon: 'mdi:spotify'
-              group: true
-            - entity: media_player.echo_everywhere
-              type: 'custom:mini-media-player'
-              artwork: cover
-              hide:
-                power_state: false
-                source: true
-                volume: false
-              icon: 'mdi:spotify' 
-              group: true
+            - type: media-control
+              entity: media_player.apple_tv
+            - type: media-control
+              entity: media_player.living_room
+            - type: media-control
+              entity: media_player.echo_kitchen
+            - type: media-control
+              entity: media_player.echo_bedroom
+            - type: media-control
+              entity: media_player.echo_library
+            - type: media-control
+              entity: media_player.everywhere
           state_filter:
             - playing
         - type: entity-filter
@@ -151,6 +103,7 @@ cards:
             - light.lampshade
             - light.library
             - light.table_lamp
+            - switch.tv_light
           state_filter:
             - 'on'
         - type: entity-filter
