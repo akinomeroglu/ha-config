@@ -56,13 +56,45 @@ views:
                 name: Child Room
                 show_state: false
                 type: 'custom:button-card'
-              - entity: light.bedroom
+              - entity: light.bedroom_light
                 hold_action:
                   action: more-info
                 icon: 'mdi:led-strip-variant'
                 name: Bedroom
                 show_state: false
                 type: 'custom:button-card'
+            type: horizontal-stack
+          - cards:
+              - cards:
+                  - entity: light.bathroom
+                    hold_action:
+                      action: more-info
+                    icon: 'mdi:shower'
+                    name: Bathroom
+                    show_state: false
+                    type: 'custom:button-card'
+                  - entity: switch.tv_light
+                    hold_action:
+                      action: more-info
+                    icon: 'mdi:television'
+                    name: TV Light
+                    show_state: false
+                    type: 'custom:button-card'
+                  - entity: binary_sensor.main_door
+                    hold_action:
+                      action: more-info
+                    icon: 'mdi:door'
+                    name: Door
+                    show_state: false
+                    type: 'custom:button-card'
+                  - entity: binary_sensor.closet_door
+                    hold_action:
+                      action: more-info
+                    icon: 'mdi:wardrobe-outline'
+                    name: Wardrobe
+                    show_state: false
+                    type: 'custom:button-card'
+                type: horizontal-stack
             type: horizontal-stack
           - cards:
               - cards:
@@ -103,15 +135,13 @@ views:
               - arm_away
             type: alarm-panel
         type: vertical-stack
-      - type: vertical-stack
-        cards:
-          - type: picture-glance
-            entities: []
-            aspect_ratio: 0%
+      - cards:
+          - aspect_ratio: 0%
             camera_image: camera.dino
+            entities: []
             title: Dino
-          - type: horizontal-stack
-            cards:
+            type: picture-glance
+          - cards:
               - align_header: left
                 align_icon: left
                 animate: true
@@ -144,8 +174,8 @@ views:
                 show:
                   extrema: true
                 type: 'custom:mini-graph-card'
-          - type: horizontal-stack
-            cards:
+            type: horizontal-stack
+          - cards:
               - align_header: left
                 align_icon: left
                 animate: true
@@ -178,7 +208,10 @@ views:
                 show:
                   extrema: true
                 type: 'custom:mini-graph-card'
+            type: horizontal-stack
+        type: vertical-stack
     icon: 'mdi:tablet'
-    path: test
-    title: Test
+    panel: false
+    path: tablet
+    title: Tablet
 
