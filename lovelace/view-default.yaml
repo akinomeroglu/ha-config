@@ -9,7 +9,7 @@ cards:
           - type: 'custom:weather-card'
             current: true
             details: false
-            entity: weather.dark_sky
+            entity: weather.omerogluhq
             forecast: true
             name: Weather
           - type: horizontal-stack
