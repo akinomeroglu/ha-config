@@ -131,6 +131,11 @@ yeelight:
   devices: 
     192.168.1.13:
       name: Bedroom Light 
+fan:
+# Example configuration.yaml entry
+  - platform: xiaomi_miio
+    host: 192.168.1.32
+    token: !secret fancontroller
 
 homekit:
 mobile_app:
