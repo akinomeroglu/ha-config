@@ -26,20 +26,20 @@ cloud:
 #Lovelace
 lovelace:
 #Enable yaml for prod
-  mode: yaml
-  resources:
-    - type: module
-      url: /hacsfiles/weather-card/weather-card.js
-    - type: module
-      url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
-    - type: module
-      url: /local/battery-entity.js
-    - type: module
-      url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
-    - type: module
-      url: /hacsfiles/button-card/button-card.js
-    - type: module
-      url: /hacsfiles/custom-header/custom-header.js
+#  mode: yaml
+#  resources:
+#    - type: module
+#      url: /hacsfiles/weather-card/weather-card.js
+#    - type: module
+#      url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+#    - type: module
+#      url: /local/battery-entity.js
+#    - type: module
+#      url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+#    - type: module
+#      url: /hacsfiles/button-card/button-card.js
+#    - type: module
+#      url: /hacsfiles/custom-header/custom-header.js
 
 #Person
 person:
@@ -137,7 +137,6 @@ fan:
     host: 192.168.1.32
     token: !secret fancontroller
 
-homekit:
 mobile_app:
 
 #home_alarm
